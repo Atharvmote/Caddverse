@@ -86,7 +86,6 @@ export const Certifications: React.FC = () => {
         
         {/* Section Header */}
         <div className="cert-header">
-          <span className="section-tag">Recognitions</span>
           <h2 className="section-title">
             Accredited &amp; <span className="text-highlight">Certified By</span>
           </h2>

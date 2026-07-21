@@ -33,7 +33,6 @@ export const IndustriesServe: React.FC = () => {
         
         {/* Section Header */}
         <div className="industries-header">
-          <span className="section-tag">Target Sectors</span>
           <h2 className="section-title">
             Industries <span className="text-highlight">We Serve</span>
           </h2>

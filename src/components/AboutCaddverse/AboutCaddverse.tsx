@@ -47,7 +47,7 @@ export const AboutCaddverse: React.FC = () => {
         {/* Centered Section Header */}
         <div className="about-header-centered">
           <h2 className="section-title about-title">
-            About <span className="text-highlight">Caddverse</span>
+            About <span className="text-highlight">CADDverse Teachlab</span>
           </h2>
           <p className="about-subtitle">
             A trusted partner in engineering excellence and professional development

@@ -201,7 +201,6 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
         {viewMode === 'featured' && (
           <>
             <div className="section-header">
-              <span className="section-tag">Featured Courses</span>
               <h2 className="section-title">
                 Industry Relevant. <span className="text-highlight">Career Driven.</span>
               </h2>
@@ -312,7 +311,6 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
             </div>
 
             <div className="section-header">
-              <span className="section-tag">All Programs</span>
               <h2 className="section-title">
                 CADDverse Teachlab <span className="text-highlight">Course Explorer</span>
               </h2>

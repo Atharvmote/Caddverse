@@ -16,9 +16,9 @@
   --shadow-lg: rgba(9, 13, 22, 0.04);
   --glow-blue: rgba(37, 99, 235, 0.1);
   
-  /* Fonts */
-  --font-heading: 'Clash Display', 'Satoshi', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  /* Fonts - Apple / Microsoft / Vercel Ultra-Modern Tech Stack */
+  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
   
   /* Spacing (8px Grid System) */
   --space-1: 8px;
@@ -77,6 +77,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--primary-navy);
   font-weight: 700;
   line-height: 1.15;
+  letter-spacing: -0.025em;
 }
 
 p {

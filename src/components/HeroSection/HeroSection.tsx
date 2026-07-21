@@ -111,18 +111,18 @@ export const HeroSection: React.FC = () => {
           >
             {/* Small Glass Badge */}
             <div className="hero-badge">
-              <span className="star-emoji">⭐</span> 13+ YEARS OF EDUCATIONAL EXCELLENCE
+              <span className="star-emoji" style={{ color: '#F59E0B' }}>★</span> ISO 9001:2015 CERTIFIED ACADEMY | 13+ YEARS OF EXCELLENCE
             </div>
 
             {/* Title with Clash Display & Solid Blue highlights matching mockup */}
             <h1 className="hero-title">
-              Design Today.<br />
-              <span className="highlight-blue">Engineer</span> Tomorrow.
+              Design the Future.<br />
+              <span className="highlight-blue">Engineer</span> Your Career.
             </h1>
 
             {/* Paragraph Subtitle */}
             <p className="hero-desc">
-              India's leading training institute for CAD, BIM &amp; Engineering Design. Industry-focused programs with 95% placement assistance.
+              India's premier gateway to elite CAD, BIM, and structural design careers. Gain hands-on competency with industry-relevant training, verifiable NSDC certifications, and dedicated placement support into top global firms.
             </p>
 
             {/* CTAs */}

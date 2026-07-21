@@ -138,9 +138,8 @@ export const WhyCaddverse: React.FC = () => {
         
         {/* Centered Section Header */}
         <div className="why-header-centered">
-          <span className="section-tag">Why Choose Caddverse?</span>
           <h2 className="section-title">
-            Learn From <span className="text-highlight">Experts</span>. Build <span className="text-highlight">Real Careers</span>.
+            Why choose <span className="text-highlight">CADDverse Teachlab</span>
           </h2>
           <div className="why-divider" />
         </div>
