@@ -48,6 +48,7 @@ export const courses: Course[] = [
     description: 'Design advanced electrical layouts & wiring. Master AutoCAD Electrical and calculations.',
     duration: '4 Months',
     level: 'Intermediate',
+    isPopular: true,
     skills: ['AutoCAD Elec', 'Panel Design', 'SLD Layouts', 'Cable Sizing'],
   },
   {
@@ -57,6 +58,7 @@ export const courses: Course[] = [
     description: 'Complete building structure & foundation design. Master Revit, STAAD.Pro, and AutoCAD.',
     duration: '6 Months',
     level: 'Advanced',
+    isPopular: true,
     skills: ['Revit Struct', 'STAAD Pro', 'AutoCAD', 'Structural FEA'],
   },
   {
@@ -66,6 +68,7 @@ export const courses: Course[] = [
     description: 'Learn modern interior spaces & styling. Master 3ds Max, V-Ray, SketchUp and rendering.',
     duration: '4 Months',
     level: 'Intermediate',
+    isPopular: true,
     skills: ['3ds Max', 'V-Ray rendering', 'SketchUp', 'Layout Planning'],
   },
 

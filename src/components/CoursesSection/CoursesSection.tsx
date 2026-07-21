@@ -23,11 +23,24 @@ import type { Course, DetailedInfo } from './coursesData';
 import { courses, getCourseDetails } from './coursesData';
 import './coursessection.css';
 
-export const CoursesSection: React.FC = () => {
-  const [viewMode, setViewMode] = useState<'featured' | 'explorer' | 'details'>('featured');
+interface CoursesSectionProps {
+  viewMode: 'featured' | 'explorer' | 'details';
+  setViewMode: React.Dispatch<React.SetStateAction<'featured' | 'explorer' | 'details'>>;
+  selectedCourse: Course | null;
+  setSelectedCourse: React.Dispatch<React.SetStateAction<Course | null>>;
+  sourceView: 'featured' | 'explorer';
+  setSourceView: React.Dispatch<React.SetStateAction<'featured' | 'explorer'>>;
+}
+
+export const CoursesSection: React.FC<CoursesSectionProps> = ({
+  viewMode,
+  setViewMode,
+  selectedCourse,
+  setSelectedCourse,
+  sourceView,
+  setSourceView
+}) => {
   const [activeTab, setActiveTab] = useState<'master-diploma' | 'diploma' | 'professional' | 'certifications'>('master-diploma');
-  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
-  const [sourceView, setSourceView] = useState<'featured' | 'explorer'>('featured');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
 
