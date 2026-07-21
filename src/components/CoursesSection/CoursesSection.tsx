@@ -237,8 +237,8 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
                       className="course-slide-item"
                       style={{ width: `${100 / featuredCourses.length}%` }}
                     >
-                      <div className={`course-card ${course.isPopular ? 'course-card-popular' : ''}`}>
-                        {course.isPopular && <div className="popular-badge">Most Popular</div>}
+                      <div className="course-card course-card-popular">
+                        <div className="popular-badge">Most Popular</div>
                         <div className="course-thumb">
                           {renderCardGraphic(course)}
                         </div>
@@ -356,9 +356,9 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
               {filteredCourses.map((course) => (
                 <div 
                   key={course.id} 
-                  className={`course-card ${course.isPopular ? 'course-card-popular' : ''}`}
+                  className="course-card course-card-popular"
                 >
-                  {course.isPopular && <div className="popular-badge">Most Popular</div>}
+                  <div className="popular-badge">Most Popular</div>
                   <div className="course-thumb">
                     {renderCardGraphic(course)}
                   </div>
@@ -409,43 +409,43 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
               </button>
             </div>
 
+            {/* Brand Banner (Full Width) */}
+            <div className="details-hero-banner">
+              <span className="details-category-tag">{selectedCourse.category.replace('-', ' ').toUpperCase()}</span>
+              <h1 className="details-course-title">{courseDetails.title}</h1>
+              <p className="details-course-subtitle">{courseDetails.description}</p>
+              
+              {/* Info strip */}
+              <div className="details-specs-strip">
+                <div className="spec-strip-item">
+                  <Clock size={16} className="spec-strip-icon" />
+                  <div>
+                    <span className="spec-strip-label">DURATION</span>
+                    <span className="spec-strip-value">{courseDetails.duration}</span>
+                  </div>
+                </div>
+                <div className="spec-strip-item">
+                  <Laptop size={16} className="spec-strip-icon" />
+                  <div>
+                    <span className="spec-strip-label">MODE</span>
+                    <span className="spec-strip-value">{courseDetails.mode}</span>
+                  </div>
+                </div>
+                <div className="spec-strip-item">
+                  <MapPin size={16} className="spec-strip-icon" />
+                  <div>
+                    <span className="spec-strip-label">VENUE</span>
+                    <span className="spec-strip-value">{courseDetails.venue}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Split layout columns */}
             <div className="details-split-layout">
               
               {/* Left Column: Full Specifications */}
               <div className="details-content-column">
-                
-                {/* Brand Banner */}
-                <div className="details-hero-banner">
-                  <span className="details-category-tag">{selectedCourse.category.replace('-', ' ').toUpperCase()}</span>
-                  <h1 className="details-course-title">{courseDetails.title}</h1>
-                  <p className="details-course-subtitle">{courseDetails.description}</p>
-                  
-                  {/* Info strip */}
-                  <div className="details-specs-strip">
-                    <div className="spec-strip-item">
-                      <Clock size={16} className="spec-strip-icon" />
-                      <div>
-                        <span className="spec-strip-label">DURATION</span>
-                        <span className="spec-strip-value">{courseDetails.duration}</span>
-                      </div>
-                    </div>
-                    <div className="spec-strip-item">
-                      <Laptop size={16} className="spec-strip-icon" />
-                      <div>
-                        <span className="spec-strip-label">MODE</span>
-                        <span className="spec-strip-value">{courseDetails.mode}</span>
-                      </div>
-                    </div>
-                    <div className="spec-strip-item">
-                      <MapPin size={16} className="spec-strip-icon" />
-                      <div>
-                        <span className="spec-strip-label">VENUE</span>
-                        <span className="spec-strip-value">{courseDetails.venue}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
                 {/* Job Opportunities Section */}
                 <div className="details-section-block">
