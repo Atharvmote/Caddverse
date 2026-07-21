@@ -17,7 +17,8 @@ import {
   Laptop, 
   BookOpen, 
   HelpCircle,
-  TrendingUp
+  TrendingUp,
+  CreditCard
 } from 'lucide-react';
 import type { Course, DetailedInfo } from './coursesData';
 import { courses, getCourseDetails } from './coursesData';
@@ -313,7 +314,7 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
             <div className="section-header">
               <span className="section-tag">All Programs</span>
               <h2 className="section-title">
-                Caddverse <span className="text-highlight">Course Explorer</span>
+                CADDverse Teachlab <span className="text-highlight">Course Explorer</span>
               </h2>
               <p className="section-desc">
                 Browse our comprehensive catalog of 41 specialized CAD, BIM, structure, and interior drafting certifications.
@@ -438,8 +439,22 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
                     <span className="spec-strip-value">{courseDetails.venue}</span>
                   </div>
                 </div>
-              </div>
-            </div>
+                 <div className="spec-strip-item">
+                   <CreditCard size={16} className="spec-strip-icon" />
+                   <div>
+                     <span className="spec-strip-label">SCHOLARSHIPS &amp; EMI</span>
+                     <span className="spec-strip-value">Educational Financing &amp; Easy EMI Available</span>
+                   </div>
+                 </div>
+                  <div className="spec-strip-item">
+                    <ShieldCheck size={16} className="spec-strip-icon" stroke="#10B981" />
+                    <div>
+                      <span className="spec-strip-label">VERIFICATION</span>
+                      <span className="spec-strip-value">NSDC &amp; ISO 9001:2015 Certified</span>
+                    </div>
+                  </div>
+               </div>
+             </div>
 
             {/* Split layout columns */}
             <div className="details-split-layout">
@@ -651,7 +666,7 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
 
             {/* Below the Split (Full Width): Key Differentiators */}
             <div className="details-differentiators-wrapper">
-              <h2 className="differentiators-title">Caddverse Key Differentiators</h2>
+              <h2 className="differentiators-title">CADDverse Teachlab Key Differentiators</h2>
               
               <div className="differentiators-grid">
                 

@@ -45,8 +45,8 @@ export const Header: React.FC = () => {
                 <path d="M 61,38 C 57.5,33.5 49,33.5 45,39 C 40.5,45.5 40.5,54.5 45,61 C 49,66.5 57.5,66.5 61,62" stroke="url(#logoGrad)" strokeWidth="8.5" strokeLinecap="round" fill="none" />
               </svg>
               <div className="logo-text">
-                <span className="logo-brand text-gradient-blue">CADDVERSE</span>
-                <span className="logo-sub">TECHLABS</span>
+                <span className="logo-brand text-gradient-blue">CADDverse</span>
+                <span className="logo-sub">Teachlab</span>
               </div>
             </a>
 

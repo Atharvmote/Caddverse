@@ -399,9 +399,9 @@
 
 /* Full Width Hero Banner */
 .details-hero-banner {
-  background: linear-gradient(135deg, #091e4a 0%, #06112c 50%, #0044FF 100%);
+  background: linear-gradient(135deg, #0d255c 0%, #08173b 50%, #0044FF 100%);
   color: var(--white);
-  padding: 56px;
+  padding: 48px;
   border-radius: 28px;
   box-shadow: 
     0 20px 40px rgba(9, 13, 22, 0.04),
@@ -463,19 +463,28 @@
   margin-bottom: 36px;
 }
 
-/* Specs strip details */
 .details-specs-strip {
   display: flex;
-  gap: 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
   padding-top: 28px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  width: 100%;
+}
+
+.details-specs-strip::-webkit-scrollbar {
+  display: none;
 }
 
 .spec-strip-item {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-shrink: 0;
 }
 
 .spec-strip-icon {
