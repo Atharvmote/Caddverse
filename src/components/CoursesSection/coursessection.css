@@ -506,7 +506,7 @@
 /* Split layout columns starting below banner */
 .details-split-layout {
   display: grid;
-  grid-template-columns: 1.35fr 0.65fr;
+  grid-template-columns: 1.48fr 0.52fr;
   gap: 40px;
   align-items: flex-start;
 }
