@@ -1,0 +1,121 @@
+.cta-banner-section {
+  background: var(--background);
+  padding-top: 0;
+  padding-bottom: var(--space-8);
+}
+
+.cta-banner-card {
+  background: linear-gradient(90deg, #091e4a 0%, #0b2259 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 
+    0 15px 35px rgba(8, 18, 41, 0.2),
+    0 5px 15px rgba(37, 99, 235, 0.1);
+  position: relative;
+  overflow: hidden;
+  gap: var(--space-3);
+}
+
+@media (max-width: 768px) {
+  .cta-banner-card {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--space-4) var(--space-3);
+  }
+}
+
+/* Left Content with Rocket */
+.cta-left-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  z-index: 5;
+}
+
+@media (max-width: 768px) {
+  .cta-left-content {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+}
+
+.cta-icon-glow {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.2);
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  flex-shrink: 0;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.cta-text-block {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .cta-text-block {
+    text-align: center;
+  }
+}
+
+.cta-banner-title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.3;
+}
+
+.cta-banner-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 4px;
+}
+
+/* Right button and Dot grid overlay */
+.cta-right-content {
+  z-index: 5;
+}
+
+.btn-experts {
+  background: var(--white);
+  color: var(--royal-blue);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+}
+
+.btn-experts:hover {
+  background: var(--background);
+  color: var(--accent-blue);
+  transform: translateY(-2px);
+}
+
+/* Coordinate dot background accent on right edge */
+.cta-dot-grid {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 90px;
+  height: 60px;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .cta-dot-grid {
+    display: none;
+  }
+}
