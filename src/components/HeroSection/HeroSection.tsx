@@ -52,11 +52,13 @@ export const HeroSection: React.FC = () => {
           <circle cx="880" cy="700" r="350" fill="url(#heroGlowMesh1)" opacity="0.8" />
           <circle cx="750" cy="750" r="280" fill="url(#heroGlowMesh2)" opacity="0.6" />
 
-          {/* Layer 2: Highly attractive premium layered corner curves */}
-          <path d="M 720,800 C 850,750 940,650 1000,380 L 1000,800 Z" fill="url(#waveNavyGrad)" />
-          <path d="M 650,800 C 800,740 900,600 1000,420 L 1000,800 Z" fill="url(#waveBlueGrad2)" />
-          <path d="M 650,800 C 800,740 900,600 1000,420" stroke="#2563eb" strokeWidth="5" strokeLinecap="round" opacity="0.9" />
-          <path d="M 760,800 C 880,770 960,680 1000,480 L 1000,800 Z" fill="url(#waveTransBlueGrad)" opacity="0.45" />
+          {/* Layer 2: Transparent glowing blueprint CAD vector curves */}
+          <path d="M 650,800 C 800,740 900,600 1000,420 L 1000,800 Z" fill="url(#waveGlowGrad)" opacity="0.3" />
+          
+          <path d="M 650,800 C 800,740 900,600 1000,420" stroke="rgba(0, 68, 255, 0.2)" strokeWidth="1.5" />
+          <path d="M 680,800 C 820,750 920,620 1000,450" stroke="rgba(0, 68, 255, 0.12)" strokeWidth="1.2" strokeDasharray="4 4" />
+          <path d="M 710,800 C 840,760 940,640 1000,480" stroke="rgba(0, 68, 255, 0.08)" strokeWidth="1" />
+          <path d="M 740,800 C 860,770 960,660 1000,510" stroke="rgba(0, 68, 255, 0.04)" strokeWidth="1" strokeDasharray="2 6" />
 
           {/* Layer 3: Delicate Blueprint Vector Orbits & Grid lines */}
           <path d="M 450,800 Q 650,750 1000,580" stroke="rgba(37, 99, 235, 0.1)" strokeWidth="1.2" strokeDasharray="3 4" />
@@ -81,17 +83,9 @@ export const HeroSection: React.FC = () => {
               <stop offset="50%" stopColor="#6366f1" stopOpacity="0.1" />
               <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
             </radialGradient>
-            <linearGradient id="waveNavyGrad" x1="0" y1="1" x2="1" y2="0">
-              <stop offset="0%" stopColor="#090d16" />
-              <stop offset="100%" stopColor="#0f172a" />
-            </linearGradient>
-            <linearGradient id="waveBlueGrad2" x1="0" y1="1" x2="1" y2="0">
-              <stop offset="0%" stopColor="#2563eb" />
-              <stop offset="100%" stopColor="#4f46e5" />
-            </linearGradient>
-            <linearGradient id="waveTransBlueGrad" x1="0" y1="1" x2="1" y2="0">
-              <stop offset="0%" stopColor="#2563eb" stopOpacity="0" />
-              <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.75" />
+            <linearGradient id="waveGlowGrad" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0%" stopColor="#0044FF" stopOpacity="0.35" />
+              <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
             </linearGradient>
           </defs>
         </svg>

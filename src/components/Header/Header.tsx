@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import './header.css';
 
 export const Header: React.FC = () => {
@@ -8,7 +8,7 @@ export const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('Home');
 
-  const navLinks = ['Home', 'Courses', 'Our Journey', 'About Us', 'Placements', 'Resources'];
+  const navLinks = ['Home', 'About Us', 'Courses', 'Training', 'Our Journey'];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,7 +54,7 @@ export const Header: React.FC = () => {
             <nav className="header-nav">
               {navLinks.map((link) => {
                 const isActive = activeLink === link;
-                const linkId = link.toLowerCase().replace(/\s+/g, '-');
+                const linkId = link === 'Training' ? 'upskilling' : link.toLowerCase().replace(/\s+/g, '-');
                 return (
                   <a
                     key={link}
@@ -67,7 +67,6 @@ export const Header: React.FC = () => {
                   >
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
                       {link}
-                      {link === 'Resources' && <ChevronDown size={14} className="nav-chevron" />}
                     </span>
                     {isActive && (
                       <motion.div
@@ -111,7 +110,7 @@ export const Header: React.FC = () => {
             className="mobile-nav-overlay"
           >
             {navLinks.map((link) => {
-              const linkId = link.toLowerCase().replace(/\s+/g, '-');
+              const linkId = link === 'Training' ? 'upskilling' : link.toLowerCase().replace(/\s+/g, '-');
               return (
                 <a
                   key={link}

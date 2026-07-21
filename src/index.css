@@ -215,19 +215,55 @@ a {
 }
 
 .section-title {
-  font-size: 40px;
-  letter-spacing: -1px;
-  margin-bottom: var(--space-2);
+  font-size: 38px !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  color: var(--primary-navy) !important;
+  letter-spacing: -0.025em !important;
+  margin-bottom: 20px !important;
+  display: inline-block !important;
+  position: relative !important;
+  border-bottom: 4px solid #0044FF !important;
+  padding-bottom: 12px !important;
+  text-align: center !important;
 }
 
 .section-desc {
   font-size: 18px;
   color: var(--text-secondary);
+  margin-top: 8px;
+}
+
+/* Centered Header container styling */
+.section-header,
+.about-header-centered,
+.why-header-centered,
+.cert-header,
+.industries-header {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  margin-bottom: 40px !important;
+}
+
+/* Hide all old manual divider elements */
+.about-divider,
+.courses-divider,
+.why-divider,
+.industries-divider,
+.cert-divider,
+.upskilling-divider {
+  display: none !important;
 }
 
 @media (max-width: 768px) {
   .section-title {
-    font-size: 32px;
+    font-size: 28px !important;
+    border-bottom-width: 3px !important;
+    padding-bottom: 8px !important;
   }
   .section-desc {
     font-size: 16px;
