@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { ArrowRight, GraduationCap, Users, Target, Award, PenTool, Cpu, Building2, Boxes, Briefcase } from 'lucide-react';
 import './herosection.css';
 
@@ -38,35 +38,6 @@ const AnimatedNumber: React.FC<{ value: number; suffix: string }> = ({ value, su
 };
 
 export const HeroSection: React.FC = () => {
-  const visualRef = useRef<HTMLDivElement>(null);
-
-  // Mouse Parallax coordinates
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springConfig = { damping: 25, stiffness: 120 };
-  const smoothX = useSpring(mouseX, springConfig);
-  const smoothY = useSpring(mouseY, springConfig);
-
-  const logoRotateX = useTransform(smoothY, [-200, 200], [8, -8]);
-  const logoRotateY = useTransform(smoothX, [-200, 200], [-8, 8]);
-  const orbitRotate = useTransform(smoothX, [-200, 200], [-10, 10]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!visualRef.current) return;
-    const rect = visualRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const relX = Math.max(-200, Math.min(200, e.clientX - centerX));
-    const relY = Math.max(-200, Math.min(200, e.clientY - centerY));
-    mouseX.set(relX);
-    mouseY.set(relY);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
 
   return (
     <section id="home" className="hero-wrapper">

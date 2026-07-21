@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import { 
   GraduationCap, 
   Briefcase, 
@@ -15,7 +16,7 @@ import './trainingupskilling.css';
 
 export const TrainingUpskilling: React.FC = () => {
   // Motion Animation Variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: {},
     visible: {
       transition: {
@@ -24,12 +25,12 @@ export const TrainingUpskilling: React.FC = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { type: 'spring', stiffness: 100, damping: 16 }
+      transition: { type: 'spring' as const, stiffness: 100, damping: 16 }
     }
   };
 

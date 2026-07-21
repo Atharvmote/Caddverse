@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
 import { Send, MapPin, Phone, Mail, Award, Landmark, Globe } from 'lucide-react';
 import './inquirycontact.css';
 
