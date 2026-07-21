@@ -419,35 +419,35 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
               {/* Info strip */}
               <div className="details-specs-strip">
                 <div className="spec-strip-item">
-                  <Clock size={16} className="spec-strip-icon" />
+                  <Clock size={28} className="spec-strip-icon" />
                   <div>
                     <span className="spec-strip-label">DURATION</span>
                     <span className="spec-strip-value">{courseDetails.duration}</span>
                   </div>
                 </div>
                 <div className="spec-strip-item">
-                  <Laptop size={16} className="spec-strip-icon" />
+                  <Laptop size={28} className="spec-strip-icon" />
                   <div>
                     <span className="spec-strip-label">MODE</span>
                     <span className="spec-strip-value">{courseDetails.mode}</span>
                   </div>
                 </div>
                 <div className="spec-strip-item">
-                  <MapPin size={16} className="spec-strip-icon" />
+                  <MapPin size={28} className="spec-strip-icon" />
                   <div>
                     <span className="spec-strip-label">VENUE</span>
                     <span className="spec-strip-value">{courseDetails.venue}</span>
                   </div>
                 </div>
                  <div className="spec-strip-item">
-                   <CreditCard size={16} className="spec-strip-icon" />
+                   <CreditCard size={28} className="spec-strip-icon" />
                    <div>
                      <span className="spec-strip-label">SCHOLARSHIPS &amp; EMI</span>
                      <span className="spec-strip-value">Educational Financing &amp; Easy EMI Available</span>
                    </div>
                  </div>
                   <div className="spec-strip-item">
-                    <ShieldCheck size={16} className="spec-strip-icon" stroke="#10B981" />
+                    <ShieldCheck size={28} className="spec-strip-icon" stroke="#10B981" />
                     <div>
                       <span className="spec-strip-label">VERIFICATION</span>
                       <span className="spec-strip-value">NSDC &amp; ISO 9001:2015 Certified</span>
@@ -490,33 +490,36 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
                   </p>
                 </div>
 
-                {/* Training Program Section */}
-                <div className="details-section-block">
-                  <h2 className="details-block-title">
-                    <Layers size={20} className="block-title-icon" /> {courseDetails.trainingTitle}
-                  </h2>
-                  <div className="details-list-grid">
-                    {courseDetails.trainingItems.map((item, i) => (
-                      <div key={i} className="details-list-item">
-                        <div className="list-check-icon"><Check size={12} /></div>
-                        <span className="list-item-text">{item}</span>
-                      </div>
-                    ))}
+                {/* Nested side-by-side grid row for highlights */}
+                <div className="details-two-columns-row">
+                  {/* Training Program Section */}
+                  <div className="details-section-block" style={{ marginBottom: 0 }}>
+                    <h2 className="details-block-title">
+                      <Layers size={20} className="block-title-icon" /> {courseDetails.trainingTitle}
+                    </h2>
+                    <div className="details-vertical-list">
+                      {courseDetails.trainingItems.map((item, i) => (
+                        <div key={i} className="details-list-item">
+                          <div className="list-check-icon"><Check size={12} /></div>
+                          <span className="list-item-text">{item}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                {/* Ideal For Section */}
-                <div className="details-section-block">
-                  <h2 className="details-block-title">
-                    <HelpCircle size={20} className="block-title-icon" /> Ideal Applications
-                  </h2>
-                  <div className="details-list-grid">
-                    {courseDetails.idealItems.map((item, i) => (
-                      <div key={i} className="details-list-item">
-                        <div className="list-check-icon-blue"><Check size={12} /></div>
-                        <span className="list-item-text">{item}</span>
-                      </div>
-                    ))}
+                  {/* Ideal For Section */}
+                  <div className="details-section-block" style={{ marginBottom: 0 }}>
+                    <h2 className="details-block-title">
+                      <HelpCircle size={20} className="block-title-icon" /> Ideal Applications
+                    </h2>
+                    <div className="details-vertical-list">
+                      {courseDetails.idealItems.map((item, i) => (
+                        <div key={i} className="details-list-item">
+                          <div className="list-check-icon-blue"><Check size={12} /></div>
+                          <span className="list-item-text">{item}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
