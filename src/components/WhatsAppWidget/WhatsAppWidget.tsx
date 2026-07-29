@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { X, Send, MessageCircle } from 'lucide-react';
+import { X, Send } from 'lucide-react';
 import { courses } from '../CoursesSection/coursesData';
 import logoImg from '../../assets/newmodern.png';
 import './whatsappwidget.css';
