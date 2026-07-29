@@ -1,0 +1,299 @@
+.coming-soon-wrapper {
+  position: relative;
+  min-height: calc(100vh - 80px);
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #050b18; /* Premium Deep Space Navy */
+  color: var(--white);
+  overflow: hidden;
+  padding: 40px var(--space-3);
+}
+
+/* Blueprint Grid Background */
+.coming-soon-grid-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Cybernetic Glow Lights */
+.coming-soon-glow-light {
+  position: absolute;
+  top: -10%;
+  left: 30%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, rgba(37, 99, 235, 0) 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 2;
+  animation: pulseGlow 12s infinite alternate ease-in-out;
+}
+
+.coming-soon-glow-light-2 {
+  position: absolute;
+  bottom: -20%;
+  right: 15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.1) 0%, rgba(79, 70, 229, 0) 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 2;
+  animation: pulseGlow 15s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: scale(0.9) translate(0, 0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.1) translate(30px, -20px);
+    opacity: 1;
+  }
+}
+
+.coming-soon-container {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px !important;
+}
+
+.cs-back-nav {
+  align-self: flex-start;
+  margin-bottom: var(--space-4);
+}
+
+.btn-cs-back {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: all var(--transition-normal);
+}
+
+.btn-cs-back:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(37, 99, 235, 0.4);
+  color: var(--white);
+  transform: translateX(-4px);
+}
+
+.coming-soon-content {
+  text-align: center;
+  width: 100%;
+}
+
+.cs-badge-wrapper {
+  margin-bottom: var(--space-3);
+}
+
+.cs-badge {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(79, 70, 229, 0.2) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.4);
+  color: #60a5fa;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cs-badge-icon {
+  animation: rotateSparkle 3s infinite linear;
+}
+
+@keyframes rotateSparkle {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Icon Showcase */
+.cs-icon-showcase {
+  margin-bottom: var(--space-4);
+}
+
+.cs-icon-outer-ring {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1px dashed rgba(37, 99, 235, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  animation: spinRing 24s infinite linear;
+}
+
+.cs-icon-inner-ring {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, rgba(5, 11, 24, 0.8) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3b82f6;
+  box-shadow: 0 0 25px rgba(37, 99, 235, 0.2);
+  animation: counterSpinRing 24s infinite linear;
+}
+
+.coming-soon-icon {
+  animation: floatIcon 4s infinite ease-in-out;
+}
+
+@keyframes spinRing {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes counterSpinRing {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Title and Subtitle */
+.coming-soon-title {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: var(--space-3);
+  color: var(--white);
+  letter-spacing: -1.5px;
+}
+
+.coming-soon-subtitle {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 600px;
+  margin: 0 auto var(--space-5);
+  line-height: 1.6;
+}
+
+/* Call to Action card */
+.cs-action-card {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: var(--space-4);
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.cs-notify-form {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.cs-email-input {
+  flex-grow: 1;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 18px;
+  border-radius: 12px;
+  color: var(--white);
+  font-size: 14.5px;
+  transition: all var(--transition-normal);
+}
+
+.cs-email-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--royal-blue);
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.25);
+}
+
+.btn-cs-submit {
+  background: var(--royal-blue);
+  color: var(--white);
+  padding: 12px 22px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  font-size: 14.5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: all var(--transition-normal);
+}
+
+.btn-cs-submit:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+}
+
+.cs-success-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #34d399;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 0;
+}
+
+.cs-success-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #34d399;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #34d399;
+  display: inline-block;
+}
+
+/* Responsiveness */
+@media (max-width: 640px) {
+  .coming-soon-title {
+    font-size: 36px;
+  }
+  
+  .coming-soon-subtitle {
+    font-size: 15px;
+  }
+
+  .cs-notify-form {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-cs-submit {
+    justify-content: center;
+  }
+  
+  .coming-soon-wrapper {
+    padding: 20px var(--space-2);
+  }
+}

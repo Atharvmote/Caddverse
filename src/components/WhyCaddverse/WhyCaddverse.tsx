@@ -60,7 +60,7 @@ export const WhyCaddverse: React.FC = () => {
 
   const testimonials: Testimonial[] = [
     {
-      name: 'Rohit Sharma',
+      name: 'Rajat Taide',
       role: 'BIM Engineer',
       company: 'L&T Construction',
       text: "Caddverse Techlabs shaped my career with practical training and the right guidance. Today, I'm working with a top MNC as a BIM Engineer.",
@@ -74,7 +74,7 @@ export const WhyCaddverse: React.FC = () => {
       ),
     },
     {
-      name: 'Priyanka Patel',
+      name: 'Arpit Khubalkar',
       role: 'Structural Architect',
       company: 'Tata Projects',
       text: "The structural steel designs and STAAD analysis taught here are top notch. It directly helped me clear my placement test at Tata Projects.",
@@ -88,7 +88,7 @@ export const WhyCaddverse: React.FC = () => {
       ),
     },
     {
-      name: 'Rohan Deshmukh',
+      name: 'Priya Siside',
       role: 'CAD Specialist',
       company: 'Aecom',
       text: "Authorized licenses, great labs, and mentors who are real engineering professionals. Best design academy in Bangalore.",
@@ -139,9 +139,12 @@ export const WhyCaddverse: React.FC = () => {
         {/* Centered Section Header */}
         <div className="why-header-centered">
           <h2 className="section-title">
-            Why choose <span className="text-highlight">CADDverse Teachlab</span>
+            Why choose <span className="text-highlight">CADDverse Techlabs</span>
           </h2>
           <div className="why-divider" />
+          <p className="why-subtitle">
+            Empowering engineers with practical expertise, industry-aligned knowledge, and career opportunities.
+          </p>
         </div>
 
         <div className="why-split-container">

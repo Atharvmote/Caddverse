@@ -47,10 +47,10 @@ export const TrainingUpskilling: React.FC = () => {
           <h2 className="section-title upskilling-title">
             Professional Training & <span className="text-highlight">Corporate Upskilling</span>
           </h2>
+          <div className="upskilling-divider" />
           <p className="upskilling-subtitle">
             Our training programs are designed to equip students, professionals, and organizations with practical skills and industry knowledge required in today's competitive environment.
           </p>
-          <div className="upskilling-divider" />
         </div>
 
         {/* Training Cards Grid */}
@@ -99,7 +99,7 @@ export const TrainingUpskilling: React.FC = () => {
               </li>
             </ul>
 
-            <a href="#courses" className="btn btn-card-action">
+            <a href="#inquiry" className="btn btn-card-action">
               Enroll Now
             </a>
           </motion.div>
@@ -137,7 +137,7 @@ export const TrainingUpskilling: React.FC = () => {
               </li>
             </ul>
 
-            <a href="#contact" className="btn btn-card-action btn-outline">
+            <a href="#quote" className="btn btn-card-action btn-outline">
               Get Quote
             </a>
           </motion.div>

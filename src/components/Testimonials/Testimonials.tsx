@@ -19,7 +19,7 @@ export const Testimonials: React.FC = () => {
 
   const testimonials: Testimonial[] = [
     {
-      name: 'Rohit Sharma',
+      name: 'Atul Khubalkar',
       role: 'BIM Engineer',
       company: 'L&T Construction',
       text: "Caddverse Techlabs shaped my career with practical training and the right guidance. Working on real-world Revit coordination files helped me crack the technical interview at L&T.",
@@ -36,7 +36,7 @@ export const Testimonials: React.FC = () => {
       ),
     },
     {
-      name: 'Priyanka Patel',
+      name: 'Rajesh Taide',
       role: 'Structural Consultant',
       company: 'Tata Projects',
       text: "The STAAD.Pro and Revit courses are incredibly detailed. The instructors explain design codes, shear values, and bending calculations that you never get to study in college curricula.",
@@ -44,15 +44,14 @@ export const Testimonials: React.FC = () => {
       avatar: (
         <svg className="user-avatar-svg" viewBox="0 0 100 100">
           <circle cx="50" cy="50" r="46" fill="var(--accent-blue)" opacity="0.1" />
-          {/* Stylized female face avatar */}
+          {/* Stylized male face avatar */}
           <circle cx="50" cy="40" r="14" fill="var(--accent-blue)" />
           <path d="M 24 75 C 24 58, 76 58, 76 75" fill="var(--accent-blue)" />
-          <path d="M 36 30 C 40 22, 60 22, 64 30" stroke="var(--accent-blue)" strokeWidth="3" strokeLinecap="round" fill="none" />
         </svg>
       ),
     },
     {
-      name: 'Rohan Deshmukh',
+      name: 'Rajat Dewase',
       role: 'Associate BIM Designer',
       company: 'Aecom',
       text: "Excellent lab terminals and licensed software access. The placement team helped build my portfolio website and scheduled technical mock drills which were critical to my Aecom offer.",
@@ -64,6 +63,20 @@ export const Testimonials: React.FC = () => {
           <circle cx="50" cy="39" r="15" fill="var(--electric-blue)" />
           <path d="M 22 75 C 22 55, 78 55, 78 75" fill="var(--electric-blue)" />
           <path d="M 40 32 L 60 32" stroke="var(--white)" strokeWidth="2" />
+        </svg>
+      ),
+    },
+    {
+      name: 'Yash Humane',
+      role: 'Design Engineer',
+      company: 'WSP',
+      text: "The CAD and structural training programs are the best in class. The hands-on projects and industry-expert guidance gave me the confidence to excel in a global firm like WSP.",
+      rating: 5,
+      avatar: (
+        <svg className="user-avatar-svg" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="46" fill="var(--royal-blue)" opacity="0.15" />
+          <circle cx="50" cy="39" r="15" fill="var(--royal-blue)" />
+          <path d="M 22 75 C 22 55, 78 55, 78 75" fill="var(--royal-blue)" />
         </svg>
       ),
     },

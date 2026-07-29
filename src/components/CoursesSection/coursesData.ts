@@ -182,7 +182,7 @@ export const courses: Course[] = [
     title: 'Certificate In Solidworks',
     category: 'certifications',
     description: 'Acquire 3D parametric modeling, assembly design, and detailing skills.',
-    duration: '80 Hours',
+    duration: '40 Hours',
     level: 'Intermediate',
     skills: ['SolidWorks 3D', 'Assemblies', 'Detailing'],
   },

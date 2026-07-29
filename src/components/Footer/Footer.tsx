@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Layers, Mail, Phone, MapPin, ArrowRight, ArrowUp } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowRight, ArrowUp } from 'lucide-react';
+import logoImg from '../../assets/newmodern.png';
 import './footer.css';
 
 export const Footer: React.FC = () => {
@@ -27,12 +28,10 @@ export const Footer: React.FC = () => {
           {/* Column 1: Brand Info */}
           <div className="footer-info">
             <div className="footer-logo-white">
-              <div className="logo-icon-wrapper" style={{ background: 'var(--royal-blue)' }}>
-                <Layers size={18} strokeWidth={2.5} />
-              </div>
+              <img src={logoImg} alt="CADDverse Logo" className="footer-logo-img" />
               <div className="logo-text" style={{ textTransform: 'uppercase', color: 'var(--white)', letterSpacing: '0.5px' }}>
-                <span className="logo-brand" style={{ fontSize: '15px', fontWeight: '800' }}>CADDVERSE</span>
-                <span className="logo-sub" style={{ fontSize: '9px', letterSpacing: '2px', opacity: 0.8 }}>TECHLABS</span>
+                <span className="logo-brand" style={{ fontSize: '15px', fontWeight: '800', color: 'var(--white)' }}>CADDVERSE</span>
+                <span className="logo-sub" style={{ fontSize: '9px', letterSpacing: '2px', opacity: 0.8, color: 'var(--white)' }}>TECHLABS</span>
               </div>
             </div>
             <p className="footer-desc" style={{ fontSize: '13px', lineHeight: '1.6', marginTop: '12px' }}>
@@ -71,11 +70,11 @@ export const Footer: React.FC = () => {
             <h4 className="footer-col-title">Quick Links</h4>
             <ul className="footer-links-list">
               <li className="footer-link-item"><a href="#home">Home</a></li>
-              <li className="footer-link-item"><a href="#courses">Courses</a></li>
+              <li className="footer-link-item"><a href="#explorer">Courses</a></li>
               <li className="footer-link-item"><a href="#our-journey">Our Journey</a></li>
               <li className="footer-link-item"><a href="#about-us">About Us</a></li>
-              <li className="footer-link-item"><a href="#placements">Placements</a></li>
-              <li className="footer-link-item"><a href="#courses">Contact Us</a></li>
+              <li className="footer-link-item"><a href="#home">Placements</a></li>
+              <li className="footer-link-item"><a href="#inquiry">Contact Us</a></li>
             </ul>
           </div>
 
@@ -83,12 +82,12 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className="footer-col-title">Resources</h4>
             <ul className="footer-links-list">
-              <li className="footer-link-item"><a href="#resources">Blog</a></li>
-              <li className="footer-link-item"><a href="#resources">Gallery</a></li>
-              <li className="footer-link-item"><a href="#resources">Events</a></li>
-              <li className="footer-link-item"><a href="#resources">Student Work</a></li>
-              <li className="footer-link-item"><a href="#resources">FAQ</a></li>
-              <li className="footer-link-item"><a href="#resources">Sitemap</a></li>
+              <li className="footer-link-item"><a href="#coming-soon-blogs">Blog</a></li>
+              <li className="footer-link-item"><a href="#coming-soon-photo-gallery">Gallery</a></li>
+              <li className="footer-link-item"><a href="#home">Events</a></li>
+              <li className="footer-link-item"><a href="#coming-soon-student-projects">Student Work</a></li>
+              <li className="footer-link-item"><a href="#home">FAQ</a></li>
+              <li className="footer-link-item"><a href="#home">Sitemap</a></li>
             </ul>
           </div>
 
@@ -97,7 +96,7 @@ export const Footer: React.FC = () => {
             <h4 className="footer-col-title">Contact Us</h4>
             <div className="contact-detail-item">
               <Phone size={14} />
-              <span>+91 98765 43210</span>
+              <span>+91 9049000010</span>
             </div>
             <div className="contact-detail-item">
               <Mail size={14} />
@@ -105,7 +104,7 @@ export const Footer: React.FC = () => {
             </div>
             <div className="contact-detail-item">
               <MapPin size={16} />
-              <span>2nd Floor, Tech Park, Bangalore, Karnataka - 560100</span>
+              <span style={{ lineHeight: '1.4' }}>Caddverse Techlabs llp,<br/>A/1106 , Rohan Madhuban 2,<br/>Bavdhan, Pune 411021<br/>Maharashtra, India</span>
             </div>
             
             {/* CAD site blueprint outline */}
@@ -160,9 +159,9 @@ export const Footer: React.FC = () => {
             &copy; 2026 Caddverse Techlabs. All rights reserved.
           </div>
           <div className="footer-bottom-links" style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-            <a href="#">Privacy Policy</a>
+            <a href="#home">Privacy Policy</a>
             <span style={{ color: '#334155' }}>|</span>
-            <a href="#">Terms &amp; Conditions</a>
+            <a href="#terms-conditions">Terms &amp; Conditions</a>
           </div>
           
           {/* Floating Scroll up button from the reference image */}

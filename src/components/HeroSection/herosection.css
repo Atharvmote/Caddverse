@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   position: relative;
-  padding-top: 80px; /* Space below navbar */
+  padding-top: 115px; /* Increased breathing space below fixed navbar */
   padding-bottom: 40px; /* Safe padding for stats banner */
   overflow: hidden;
   /* Luxury White Mesh + CAD Engineering Blueprint Grid + Subtle Grain Noise Texture */
@@ -75,13 +75,13 @@
 @media (max-width: 1024px) {
   .hero-wrapper {
     min-height: auto;
-    padding-top: 66px;
+    padding-top: 105px;
     padding-bottom: 24px;
     align-items: flex-start;
   }
   .hero-container {
     grid-template-columns: 1fr;
-    gap: var(--space-3);
+    gap: 32px;
     text-align: center;
   }
   .hero-wave-container {
@@ -212,8 +212,8 @@
 
 @media (max-width: 480px) {
   .hero-ctas {
-    flex-direction: column;
-    width: 100%;
+    justify-content: center;
+    width: auto;
   }
 }
 
@@ -237,256 +237,508 @@
     0 0 0 4px rgba(0, 68, 255, 0.15);
 }
 
-/* Right Side visual grid details */
+/* Next-Gen Interactive Tech Core Showcase */
 .hero-visual {
   position: relative;
   width: 100%;
-  height: 350px;
+  min-height: 520px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.tech-core-wrapper {
+  position: relative;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  perspective: 1000px;
 }
 
 @media (max-width: 1024px) {
   .hero-visual {
-    height: 290px;
-    max-width: 380px;
+    min-height: auto;
+    width: 100%;
+    margin-top: 24px;
+    padding: 0;
+  }
+  .tech-core-wrapper {
+    width: 100%;
+    max-width: 440px;
     margin: 0 auto;
   }
 }
 
-.visual-box {
+@media (max-width: 640px) {
+  .hero-wrapper {
+    padding-top: 80px;
+    padding-bottom: 16px;
+    overflow-x: hidden;
+  }
+
+  .hero-container {
+    gap: 8px;
+    text-align: center;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
+    align-items: center;
+    box-sizing: border-box;
+    margin-left: -32px; /* Force it left */
+  }
+
+  .hero-title {
+    font-size: 36px;
+    margin-bottom: 8px;
+    max-width: 100%;
+    text-align: center;
+    line-height: 1.08;
+  }
+
+  .hero-desc {
+    font-size: 13.5px;
+    margin-bottom: 16px;
+    max-width: calc(100vw - 48px);
+    padding: 0;
+    line-height: 1.55;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .hero-ctas {
+    width: auto;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+  }
+
+  .btn-explore svg {
+    display: inline-block;
+  }
+
+  .btn-explore {
+    padding: 13px 40px;
+    font-size: 14.5px;
+    border-radius: 12px;
+    width: 220px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* ───── KEEP DESKTOP DIAGRAM ON MOBILE ───── */
+  .hero-visual {
+    margin-top: 20px;
+    padding: 0;
+    overflow: visible;
+    min-height: auto !important;
+  }
+
+  .tech-core-wrapper {
+    width: 100%;
+    max-width: 100%;
+    gap: 16px;
+    padding-top: 0;
+    overflow: visible;
+    align-items: center;
+  }
+
+  /*
+   * Scale the full 440×330 diagram to fit ~308px visual width.
+   * translateX(-50%) + left:50% = perfect viewport centering.
+   * margin-bottom compensates layout gap from scale.
+   */
+  .tech-hub-diagram {
+    position: relative !important;
+    width: 440px !important;
+    height: 330px !important;
+    left: calc(50% - 40px) !important;
+    transform: translateX(-50%) scale(0.78) !important;
+    transform-origin: center top !important;
+    margin: 0 !important;
+    margin-bottom: -73px !important;
+  }
+
+  /* Hide preview panel on mobile */
+  .vertical-preview-glass-panel {
+    display: none !important;
+  }
+
+  /* Stats banner */
+  .hero-stats-banner {
+    margin-top: 16px;
+    padding: 14px 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: 30px;
+  }
+
+  .hero-desc {
+    font-size: 12.5px;
+  }
+
+  .btn-explore {
+    width: 200px;
+    padding: 12px 32px;
+    font-size: 14px;
+  }
+
+  /* Slightly smaller diagram on tiny screens */
+  .tech-hub-diagram {
+    transform: translateX(-50%) scale(0.68) !important;
+    margin-bottom: -106px !important; /* -(330 - 330*0.68) */
+  }
+}
+
+/* Diagram Hub Container */
+.tech-hub-diagram {
   position: relative;
   width: 440px;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 330px;
 }
 
-@media (max-width: 1024px) {
-  .visual-box {
-    width: 320px;
-    height: 320px;
-  }
-}
-
-/* Background blueprint rings */
-.orbit-blueprint-rings {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.orbit-blueprint-rings svg {
-  width: 100%;
-  height: 100%;
-}
-
-.v-ring-dashed {
-  transform-origin: 50% 50%;
-  stroke: rgba(37, 99, 235, 0.35); /* Increased stroke visibility */
-  stroke-dasharray: 2 6;
-  animation: slowClockwise 40s linear infinite;
-}
-
-.v-ring {
-  transform-origin: 50% 50%;
-  stroke: rgba(37, 99, 235, 0.22); /* Increased stroke visibility */
-  animation: slowCounterClockwise 30s linear infinite;
-}
-
-@keyframes slowClockwise {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes slowCounterClockwise {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(-360deg); }
-}
-
-/* Center card - glowing blue capsule card */
-.orbit-center-card {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90px;
-  height: 90px;
-  background: linear-gradient(135deg, #0044FF 0%, #091e4a 100%);
-  border-radius: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 
-    0 12px 35px rgba(37, 99, 235, 0.35),
-    0 0 0 1px rgba(255, 255, 255, 0.15) inset;
-  z-index: 5;
-  animation: logoFloat 5s ease-in-out infinite;
-}
-
-@keyframes logoFloat {
-  0%, 100% {
-    transform: translate(-50%, -50%) translateY(-4px);
-  }
-  50% {
-    transform: translate(-50%, -50%) translateY(4px);
-  }
-}
-
-@media (max-width: 1024px) {
-  .orbit-center-card {
-    width: 75px;
-    height: 75px;
-    border-radius: 18px;
-  }
-}
-
-.center-shield-svg {
-  width: 50%;
-  height: 50%;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
-}
-
-/* Spinning container wrapper for orbiting nodes */
-.orbit-spinning-wrapper {
+/* SVG Radar Canvas */
+.tech-core-svg-canvas {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  z-index: 10;
-  pointer-events: none; /* Let clicks pass through */
-  animation: orbitSpin 30s linear infinite;
+  height: 330px;
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* Floating feature nodes - Hover disabled */
-.orbit-node {
-  position: absolute;
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border: none;
-  padding: 6px 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: none;
-  z-index: 10;
-  cursor: default;
-  pointer-events: none; /* Disable all mouse interactions */
-  transform: translate(-50%, -50%);
-  animation: counterOrbitSpin 30s linear infinite;
+.t-ring-outer {
+  transform-origin: 220px 160px;
+  animation: radarClockwise 45s linear infinite;
 }
 
-.orbit-node-icon {
-  width: 26px;
-  height: 26px;
-  background: rgba(37, 99, 235, 0.12); /* Slightly higher opacity backdrop circle */
-  color: var(--royal-blue);
-  border-radius: 50%; /* Tidy circle badges like mini planets */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.t-ring-inner {
+  transform-origin: 220px 160px;
+  animation: radarCounter 30s linear infinite;
 }
 
-.orbit-node-label {
-  color: var(--primary-navy);
-  font-family: var(--font-heading);
-  font-size: 13.5px;
-  font-weight: 700;
-  letter-spacing: -0.2px;
-}
-
-/* Absolute Hexagonal positioning on Desktop (relative to 440px wide visual-box) */
-.node-cad-design {
-  top: calc(50% - 155px);
-  left: 50%;
-}
-
-.node-cae-analysis {
-  top: calc(50% - 78px);
-  left: calc(50% + 134px);
-}
-
-.node-bim-modeling {
-  top: calc(50% + 78px);
-  left: calc(50% + 134px);
-}
-
-.node-3d-printing {
-  top: calc(50% + 155px);
-  left: 50%;
-}
-
-.node-training {
-  top: calc(50% + 78px);
-  left: calc(50% - 134px);
-}
-
-.node-consultancy {
-  top: calc(50% - 78px);
-  left: calc(50% - 134px);
-}
-
-/* Spinning keyframes */
-@keyframes orbitSpin {
+@keyframes radarClockwise {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
-@keyframes counterOrbitSpin {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(-360deg); }
+@keyframes radarCounter {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
 }
 
-/* Responsive adjustment for tablet/mobile where orbits stack/scale */
-@media (max-width: 1024px) {
-  .orbit-node {
-    padding: 6px 12px;
-    border-radius: 10px;
-    gap: 6px;
-  }
-  .orbit-node-icon {
-    width: 22px;
-    height: 22px;
-    border-radius: 6px;
-  }
-  .orbit-node-icon svg {
-    width: 12px;
-    height: 12px;
-  }
-  .orbit-node-label {
-    font-size: 11px;
-  }
-  
-  .node-cad-design {
-    top: calc(50% - 110px);
-    left: 50%;
-  }
-  .node-cae-analysis {
-    top: calc(50% - 55px);
-    left: calc(50% + 95px);
-  }
-  .node-bim-modeling {
-    top: calc(50% + 55px);
-    left: calc(50% + 95px);
-  }
-  .node-3d-printing {
-    top: calc(50% + 110px);
-    left: 50%;
-  }
-  .node-training {
-    top: calc(50% + 55px);
-    left: calc(50% - 95px);
-  }
-  .node-consultancy {
-    top: calc(50% - 55px);
-    left: calc(50% - 95px);
-  }
+/* Laser Beams */
+.laser-beam {
+  stroke: rgba(37, 99, 235, 0.12);
+  stroke-width: 1.5;
+  transition: all 0.4s ease;
+}
+
+.laser-beam-active {
+  stroke: #0044FF;
+  stroke-width: 2.5;
+  stroke-dasharray: 6 6;
+  animation: laserPulse 1.2s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(0, 68, 255, 0.6));
+}
+
+@keyframes laserPulse {
+  from { stroke-dashoffset: 24; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* Center Hub Core - Perfectly Centered, Extra Large, Zero Shadow */
+.tech-center-core {
+  position: absolute;
+  top: 160px;
+  left: 220px;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 160px;
+  background: transparent;
+  pointer-events: none;
+  animation: coreFloat 6s ease-in-out infinite;
+}
+
+@keyframes coreFloat {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+  50% { transform: translate(-50%, -50%) translateY(-5px); }
+}
+
+.core-logo-img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  filter: none; /* Absolutely zero drop shadow or box shadow */
+}
+
+/* Vertical Node Glass Buttons */
+.vertical-nodes-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 330px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.v-node-card {
+  pointer-events: auto;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  border-radius: 14px;
+  color: #081229;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 
+    0 4px 14px rgba(8, 18, 41, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.v-node-card:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  background: #ffffff;
+  border-color: rgba(37, 99, 235, 0.35);
+  box-shadow: 
+    0 8px 20px rgba(37, 99, 235, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.v-node-active {
+  background: #ffffff !important;
+  border-color: #0044FF !important;
+  box-shadow: 
+    0 10px 25px rgba(0, 68, 255, 0.18),
+    0 0 0 2px rgba(0, 68, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+  transform: translate(-50%, -50%) scale(1.08) !important;
+}
+
+.v-node-icon-wrapper {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(37, 99, 235, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2563eb;
+  transition: all 0.3s ease;
+}
+
+.v-node-active .v-node-icon-wrapper {
+  background: #0044FF;
+  color: #ffffff !important;
+}
+
+.v-node-title {
+  white-space: nowrap;
+}
+
+.v-node-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0044FF;
+  box-shadow: 0 0 8px #0044FF;
+  animation: pulseDot 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.4); }
+}
+
+/* Coordinates matching center (220px, 160px) */
+/* Top (220, 30) */
+.v-node-top {
+  top: 30px;
+  left: 220px;
+}
+/* Top Right (350, 95) */
+.v-node-top-right {
+  top: 95px;
+  left: 350px;
+}
+/* Bottom Right (350, 225) */
+.v-node-bottom-right {
+  top: 225px;
+  left: 350px;
+}
+/* Bottom (220, 290) */
+.v-node-bottom {
+  top: 290px;
+  left: 220px;
+}
+/* Bottom Left (90, 225) */
+.v-node-bottom-left {
+  top: 225px;
+  left: 90px;
+}
+/* Top Left (90, 95) */
+.v-node-top-left {
+  top: 95px;
+  left: 90px;
+}
+
+/* DYNAMIC PREVIEW GLASS PANEL STRUCTURED BLOCK */
+.vertical-preview-glass-panel {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  z-index: 20;
+}
+
+.preview-content-box {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.94) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(0, 68, 255, 0.18);
+  border-radius: 16px;
+  padding: 14px 18px;
+  box-shadow: 
+    0 14px 35px rgba(8, 18, 41, 0.07),
+    0 2px 6px rgba(0, 68, 255, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.preview-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.preview-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.preview-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(0, 68, 255, 0.2);
+  background: rgba(0, 68, 255, 0.05);
+  padding: 2px 8px;
+  border-radius: 99px;
+  width: fit-content;
+}
+
+.preview-heading {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 800;
+  color: #081229;
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+.preview-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-family: var(--font-heading);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, #0044FF 0%, #091e4a 100%);
+  padding: 5px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 68, 255, 0.2);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.preview-cta-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(0, 68, 255, 0.35);
+  gap: 5px;
+}
+
+.preview-description {
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  color: #475569;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.preview-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.15) 0%, rgba(37, 99, 235, 0.03) 100%);
+  margin: 1px 0;
+}
+
+.preview-tools-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tools-label {
+  font-family: var(--font-heading);
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #081229;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-right: 2px;
+}
+
+.tool-chip {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  color: #0044FF;
+  background: rgba(0, 68, 255, 0.06);
+  border: 1px solid rgba(0, 68, 255, 0.16);
+  padding: 2.5px 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.tool-chip:hover {
+  background: rgba(0, 68, 255, 0.12);
+  transform: translateY(-1px);
 }
 
 /* Floating Glass Stats Bar matching mockup exactly */
@@ -531,8 +783,9 @@
 
 @media (max-width: 580px) {
   .hero-stats-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-3);
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 24px 12px !important;
   }
 }
 
@@ -653,9 +906,10 @@
     height: 270px;
   }
   .orbit-center-card {
-    width: 60px;
-    height: 60px;
-    border-radius: 14px;
+    width: 75px;
+    height: 75px;
+    background: transparent;
+    box-shadow: none;
   }
   .orbit-node {
     padding: 4px 8px;

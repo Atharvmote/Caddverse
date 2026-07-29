@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, GraduationCap, Users, Target, Award, PenTool, Cpu, Building2, Boxes, Briefcase } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, GraduationCap, Users, Target, Award, PenTool, Laptop, Building2, Settings, Briefcase, ChevronRight, Sparkles } from 'lucide-react';
+import logoImg from '../../assets/newmodern.png';
 import './herosection.css';
 
 // High-performance count ticker component to animate statistics
@@ -37,7 +38,116 @@ const AnimatedNumber: React.FC<{ value: number; suffix: string }> = ({ value, su
   );
 };
 
+// Verticals data structure for the interactive tech core
+interface ServiceVertical {
+  id: string;
+  title: string;
+  shortLabel: string;
+  icon: React.ElementType;
+  badge: string;
+  description: string;
+  tools: string[];
+  nodeClass: string;
+  accentColor: string;
+  href: string;
+}
+
+const VERTICALS: ServiceVertical[] = [
+  {
+    id: 'cad-design',
+    title: 'CAD Design & Engineering',
+    shortLabel: 'CAD Design',
+    icon: PenTool,
+    badge: 'Industry Standard',
+    description: 'Precision 2D Drafting & 3D Solid Parametric Modeling.',
+    tools: ['AutoCAD', 'SolidWorks', 'Creo', 'CATIA'],
+    nodeClass: 'v-node-top',
+    accentColor: '#2563eb',
+    href: '#explorer'
+  },
+  {
+    id: 'it-solutions',
+    title: 'IT & Software Solutions',
+    shortLabel: 'IT Solutions',
+    icon: Laptop,
+    badge: 'Digital Core',
+    description: 'Custom Enterprise Apps & Engineering Systems.',
+    tools: ['Custom Software', 'Cloud', 'Web Dev', 'APIs'],
+    nodeClass: 'v-node-top-right',
+    accentColor: '#4f46e5',
+    href: '#coming-soon-it-services'
+  },
+  {
+    id: 'bim-modeling',
+    title: 'BIM & Structural Modeling',
+    shortLabel: 'BIM Modeling',
+    icon: Building2,
+    badge: 'AEC Certified',
+    description: '3D BIM, Architectural, Structural & MEP Modeling.',
+    tools: ['Revit', 'Navisworks', 'Tekla', 'BIM 360'],
+    nodeClass: 'v-node-bottom-right',
+    accentColor: '#0284c7',
+    href: '#explorer'
+  },
+  {
+    id: 'engg-services',
+    title: 'Engineering & Simulation',
+    shortLabel: 'Engg Services',
+    icon: Settings,
+    badge: 'High Precision',
+    description: 'Finite Element Analysis (FEA), CFD & Simulation.',
+    tools: ['ANSYS', 'HyperMesh', 'FEA', 'CFD'],
+    nodeClass: 'v-node-bottom',
+    accentColor: '#2563eb',
+    href: '#explorer'
+  },
+  {
+    id: 'training',
+    title: 'Training & Upskilling',
+    shortLabel: 'Training',
+    icon: GraduationCap,
+    badge: '100% Practical',
+    description: 'NSDC Job-Oriented Training with Live Projects.',
+    tools: ['NSDC Cert', 'Live Projects', 'Placement'],
+    nodeClass: 'v-node-bottom-left',
+    accentColor: '#059669',
+    href: '#upskilling'
+  },
+  {
+    id: 'consultancy',
+    title: 'Consultancy & Advisory',
+    shortLabel: 'Consultancy',
+    icon: Briefcase,
+    badge: 'Expert Advisory',
+    description: 'Corporate BIM Workflows & Tech Advisory.',
+    tools: ['BIM Audit', 'Workflow Opt', 'Advisory'],
+    nodeClass: 'v-node-top-left',
+    accentColor: '#7c3aed',
+    href: '#explorer'
+  }
+];
+
 export const HeroSection: React.FC = () => {
+  const [activeVerticalIndex, setActiveVerticalIndex] = useState<number>(0);
+  const [lastInteractionTime, setLastInteractionTime] = useState<number>(0);
+
+  // Auto-cycle through verticals every 3.5s; resumes automatically 4.5s after user interaction
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (Date.now() - lastInteractionTime < 4500) {
+        return; // Pause auto-rotation temporarily if user interacted within the last 4.5s
+      }
+      setActiveVerticalIndex((prev) => (prev + 1) % VERTICALS.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [lastInteractionTime]);
+
+  const handleUserInteraction = (idx: number) => {
+    setActiveVerticalIndex(idx);
+    setLastInteractionTime(Date.now());
+  };
+
+  const activeVertical = VERTICALS[activeVerticalIndex];
 
   return (
     <section id="home" className="hero-wrapper">
@@ -103,15 +213,10 @@ export const HeroSection: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Small Glass Badge */}
-            <div className="hero-badge">
-              <span className="star-emoji" style={{ color: '#F59E0B' }}>★</span> ISO 9001:2015 CERTIFIED ACADEMY | 13+ YEARS OF EXCELLENCE
-            </div>
-
             {/* Title with Clash Display & Solid Blue highlights matching mockup */}
             <h1 className="hero-title">
-              Design the Future.<br />
-              <span className="highlight-blue">Engineer</span> Your Career.
+              Where Learning<br />
+              Meets <span className="highlight-blue">Innovation</span>.
             </h1>
 
             {/* Paragraph Subtitle */}
@@ -121,73 +226,113 @@ export const HeroSection: React.FC = () => {
 
             {/* CTAs */}
             <div className="hero-ctas">
-              <a href="#courses" className="btn btn-primary btn-explore">
+              <a href="#explorer" className="btn btn-primary btn-explore">
                 Explore Courses
                 <ArrowRight size={15} style={{ marginLeft: '6px' }} />
               </a>
             </div>
           </motion.div>
 
-          {/* Right Side: Orbital Service Showcase with Static Layout */}
+          {/* Right Side: Next-Gen Interactive Tech Core & Verticals Hub */}
           <div className="hero-visual">
-            <div className="visual-box orbit-widget-container" style={{ perspective: 1000 }}>
-              {/* Concentric blueprint background lines linking cards */}
-              <div className="orbit-blueprint-rings">
-                <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none">
-                  <circle cx="50" cy="50" r="35" className="v-ring-dashed" strokeWidth="0.38" />
-                  <circle cx="50" cy="50" r="22" className="v-ring" strokeWidth="0.28" />
-                </svg>
+            <div className="tech-core-wrapper">
+              
+              {/* DIAGRAM HUB CONTAINER */}
+              <div className="tech-hub-diagram">
+                {/* SVG Laser Radar Canvas */}
+                <div className="tech-core-svg-canvas">
+                  <svg width="100%" height="100%" viewBox="0 0 440 330" fill="none">
+                    {/* Concentric Tech Rings around Center (220, 160) */}
+                    <circle cx="220" cy="160" r="135" className="t-ring-outer" stroke="rgba(37, 99, 235, 0.15)" strokeWidth="1.2" strokeDasharray="4 8" />
+                    <circle cx="220" cy="160" r="105" className="t-ring-mid" stroke="rgba(37, 99, 235, 0.1)" strokeWidth="1" />
+                    <circle cx="220" cy="160" r="65" className="t-ring-inner" stroke="rgba(37, 99, 235, 0.2)" strokeWidth="1.5" strokeDasharray="2 4" />
+                    
+                    {/* Energy Beam Connections from Center Hub (220, 160) to 6 Node Positions */}
+                    {/* 0: Top (220, 30) */}
+                    <line x1="220" y1="160" x2="220" y2="30" className={`laser-beam ${activeVerticalIndex === 0 ? 'laser-beam-active' : ''}`} />
+                    {/* 1: Top Right (350, 95) */}
+                    <line x1="220" y1="160" x2="350" y2="95" className={`laser-beam ${activeVerticalIndex === 1 ? 'laser-beam-active' : ''}`} />
+                    {/* 2: Bottom Right (350, 225) */}
+                    <line x1="220" y1="160" x2="350" y2="225" className={`laser-beam ${activeVerticalIndex === 2 ? 'laser-beam-active' : ''}`} />
+                    {/* 3: Bottom (220, 290) */}
+                    <line x1="220" y1="160" x2="220" y2="290" className={`laser-beam ${activeVerticalIndex === 3 ? 'laser-beam-active' : ''}`} />
+                    {/* 4: Bottom Left (90, 225) */}
+                    <line x1="220" y1="160" x2="90" y2="225" className={`laser-beam ${activeVerticalIndex === 4 ? 'laser-beam-active' : ''}`} />
+                    {/* 5: Top Left (90, 95) */}
+                    <line x1="220" y1="160" x2="90" y2="95" className={`laser-beam ${activeVerticalIndex === 5 ? 'laser-beam-active' : ''}`} />
+                  </svg>
+                </div>
+
+                {/* CENTER HUB: Clean Enlarged Brand Logo in exact center */}
+                <div className="tech-center-core">
+                  <img src={logoImg} alt="CADDverse Logo" className="core-logo-img" />
+                </div>
+
+                {/* 6 SURROUNDING VERTICAL GLASS CARDS */}
+                <div className="vertical-nodes-container">
+                  {VERTICALS.map((item, idx) => {
+                    const Icon = item.icon;
+                    const isActive = idx === activeVerticalIndex;
+                    return (
+                      <button
+                        key={item.id}
+                        type="button"
+                        className={`v-node-card ${item.nodeClass} ${isActive ? 'v-node-active' : ''}`}
+                        onClick={() => handleUserInteraction(idx)}
+                        onMouseEnter={() => handleUserInteraction(idx)}
+                      >
+                        <div className="v-node-icon-wrapper" style={{ color: isActive ? '#0044FF' : undefined }}>
+                          <Icon size={16} />
+                        </div>
+                        <span className="v-node-title">{item.shortLabel}</span>
+                        {isActive && <span className="v-node-pulse-dot" />}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
 
-              {/* CENTER CORE NODE: Caddverse shield logo in a glowing blue capsule card */}
-              <div className="orbit-center-card">
-                <svg viewBox="0 0 100 100" className="center-shield-svg" fill="none">
-                  <polygon points="50,6 88,28 88,72 50,94 12,72 12,28" stroke="#ffffff" strokeWidth="7" fill="none" strokeLinejoin="round" />
-                  <polygon points="50,19 77,34.5 77,65.5 50,81 23,65.5 23,34.5" stroke="rgba(255,255,255,0.4)" strokeWidth="3" fill="none" strokeLinejoin="round" />
-                  <path d="M 61,38 C 57.5,33.5 49,33.5 45,39 C 40.5,45.5 40.5,54.5 45,61 C 49,66.5 57.5,66.5 61,62" stroke="#ffffff" strokeWidth="8.5" strokeLinecap="round" fill="none" />
-                </svg>
+              {/* DYNAMIC INTERACTIVE PREVIEW PANEL (STRUCTURED GLASS BLOCK) */}
+              <div className="vertical-preview-glass-panel">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeVertical.id}
+                    className="preview-content-box"
+                    style={{ borderColor: `${activeVertical.accentColor}35` }}
+                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                    transition={{ duration: 0.22 }}
+                  >
+                    <div className="preview-header">
+                      <div className="preview-title-group">
+                        <span className="preview-badge" style={{ borderColor: `${activeVertical.accentColor}45`, color: activeVertical.accentColor, background: `${activeVertical.accentColor}10` }}>
+                          <Sparkles size={11} /> {activeVertical.badge}
+                        </span>
+                        <h4 className="preview-heading">{activeVertical.title}</h4>
+                      </div>
+                      <a href={activeVertical.href} className="preview-cta-link">
+                        Explore <ChevronRight size={13} />
+                      </a>
+                    </div>
+                    
+                    <p className="preview-description">{activeVertical.description}</p>
+                    
+                    <div className="preview-divider" />
+
+                    {/* Software Tools Pills */}
+                    <div className="preview-tools-list">
+                      <span className="tools-label">Key Stack:</span>
+                      {activeVertical.tools.map((tool, i) => (
+                        <span key={i} className="tool-chip" style={{ color: activeVertical.accentColor, borderColor: `${activeVertical.accentColor}25`, background: `${activeVertical.accentColor}0D` }}>
+                          {tool}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
               </div>
 
-              {/* Spinning container wrapper for orbiting nodes */}
-              <div className="orbit-spinning-wrapper">
-                
-                {/* 1. CAD Design (Top Center) */}
-                <div className="orbit-node node-cad-design">
-                  <div className="orbit-node-icon"><PenTool size={14} /></div>
-                  <span className="orbit-node-label">CAD Design</span>
-                </div>
-
-                {/* 2. CAE Analysis (Top Right) */}
-                <div className="orbit-node node-cae-analysis">
-                  <div className="orbit-node-icon"><Cpu size={14} /></div>
-                  <span className="orbit-node-label">CAE Analysis</span>
-                </div>
-
-                {/* 3. BIM Modeling (Bottom Right) */}
-                <div className="orbit-node node-bim-modeling">
-                  <div className="orbit-node-icon"><Building2 size={14} /></div>
-                  <span className="orbit-node-label">BIM Modeling</span>
-                </div>
-
-                {/* 4. 3D Printing (Bottom Center) */}
-                <div className="orbit-node node-3d-printing">
-                  <div className="orbit-node-icon"><Boxes size={14} /></div>
-                  <span className="orbit-node-label">3D Printing</span>
-                </div>
-
-                {/* 5. Training (Bottom Left) */}
-                <div className="orbit-node node-training">
-                  <div className="orbit-node-icon"><GraduationCap size={14} /></div>
-                  <span className="orbit-node-label">Training</span>
-                </div>
-
-                {/* 6. Consultancy (Top Left) */}
-                <div className="orbit-node node-consultancy">
-                  <div className="orbit-node-icon"><Briefcase size={14} /></div>
-                  <span className="orbit-node-label">Consultancy</span>
-                </div>
-
-              </div>
             </div>
           </div>
 
@@ -205,7 +350,7 @@ export const HeroSection: React.FC = () => {
               <div className="hero-stat-icon-container"><GraduationCap size={22} /></div>
               <div className="hero-stat-info">
                 <span className="hero-stat-number">
-                  <AnimatedNumber value={15000} suffix="+" />
+                  <AnimatedNumber value={10000} suffix="+" />
                 </span>
                 <span className="hero-stat-label">Students Trained</span>
               </div>
@@ -215,7 +360,7 @@ export const HeroSection: React.FC = () => {
               <div className="hero-stat-icon-container"><Users size={22} /></div>
               <div className="hero-stat-info">
                 <span className="hero-stat-number">
-                  <AnimatedNumber value={250} suffix="+" />
+                  <AnimatedNumber value={200} suffix="+" />
                 </span>
                 <span className="hero-stat-label">Recruiters</span>
               </div>
@@ -235,7 +380,7 @@ export const HeroSection: React.FC = () => {
               <div className="hero-stat-icon-container"><Award size={22} /></div>
               <div className="hero-stat-info">
                 <span className="hero-stat-number">
-                  <AnimatedNumber value={13} suffix="+" />
+                  <AnimatedNumber value={10} suffix="+" />
                 </span>
                 <span className="hero-stat-label">Years Experience</span>
               </div>

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "mrw8dddihznh",
+    "fullName": "Anshul CADDverse",
+    "companyName": "Techlabs Inc.",
+    "email": "anshul.caddverse@gmail.com",
+    "phone": "9513766024",
+    "course": "Master In Building Information Modeling (BIM)",
+    "message": "This is a professional test inquiry from the automated subagent testing suite to check logger outputs.",
+    "createdAt": "2026-07-22T15:21:51.606Z"
+  },
+  {
+    "id": "mrw8bdee1ijj",
+    "fullName": "Anshul CADDverse",
+    "companyName": "Techlabs Inc.",
+    "email": "anshul.caddverse@gmail.com",
+    "phone": "9513766024",
+    "course": "Master In Building Information Modeling (BIM)",
+    "message": "This is a professional test inquiry from the automated subagent testing suite to check logger outputs.",
+    "createdAt": "2026-07-22T15:20:18.326Z"
+  },
+  {
+    "id": "mrw88x9d67es",
+    "fullName": "Anshul CADDverse",
+    "companyName": "Techlabs Inc.",
+    "email": "anshul.caddverse@gmail.com",
+    "phone": "9513766024",
+    "course": "Master In Building Information Modeling (BIM)",
+    "message": "This is a professional test inquiry from the automated subagent testing suite to check logger outputs.",
+    "createdAt": "2026-07-22T15:18:24.097Z"
+  },
+  {
+    "id": "mrw84sm5wd2o",
+    "fullName": "Anshul CADDverse",
+    "companyName": "Techlabs Inc.",
+    "email": "anshul.caddverse@gmail.com",
+    "phone": "9513766024",
+    "course": "Master In Building Information Modeling (BIM)",
+    "message": "This is a professional test inquiry from the automated subagent testing suite to verify Gmail SMTP configurations and the MongoDB Atlas model integration.",
+    "createdAt": "2026-07-22T15:15:11.453Z"
+  }
+]

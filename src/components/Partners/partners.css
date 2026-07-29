@@ -1,41 +1,34 @@
 .partners-wrapper {
   background: var(--background);
-  padding-top: var(--space-6);
-  padding-bottom: var(--space-6);
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
   border-bottom: 1px solid var(--border);
 }
 
 .partners-title {
   text-align: center;
   font-family: var(--font-heading);
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 13.5px;
+  font-weight: 800;
   text-transform: uppercase;
-  color: #94A3B8;
+  color: var(--primary-navy);
   letter-spacing: 1.5px;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
+  opacity: 0.95;
 }
 
 .partners-slider {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: var(--space-4);
+  gap: 28px 48px;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
   .partners-slider {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
-    gap: var(--space-3);
-  }
-}
-
-@media (max-width: 480px) {
-  .partners-slider {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 24px;
   }
 }
 
@@ -44,18 +37,175 @@
   align-items: center;
   justify-content: center;
   transition: all var(--transition-normal);
+  filter: grayscale(100%);
+  opacity: 0.45;
 }
 
-.partner-svg {
-  height: 38px;
-  max-width: 140px;
-  /* Premium monochrome defaults */
-  filter: grayscale(100%) opacity(40%);
-  transition: all var(--transition-spring);
+.partner-logo-box:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: translateY(-2px);
 }
 
-.partner-logo-box:hover .partner-svg {
-  /* Dynamic original colors transition */
-  filter: grayscale(0%) opacity(100%);
-  transform: scale(1.05);
+.partner-logo-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* SVG sizes */
+.partner-logo-svg {
+  height: 22px;
+  display: block;
+}
+
+.lt-svg {
+  height: 20px;
+}
+
+.arcadis-svg {
+  height: 22px;
+}
+
+/* Text styles */
+.partner-logo-text {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 850;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+}
+
+/* Partner specifics styling */
+.lt-text {
+  color: #1E3A8A;
+  font-size: 14px;
+}
+
+.aecom-text {
+  color: #004B87;
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: -0.8px;
+}
+
+.aecom-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3B82F6;
+  margin-left: -5px;
+  margin-top: 5px;
+}
+
+.tata-projects {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.tata-bold {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 900;
+  color: #1E3A8A;
+  letter-spacing: 0.4px;
+}
+
+.projects-light {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  color: #475569;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+
+.wipro {
+  gap: 6px;
+}
+
+.wipro-rings {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wipro-rings .ring {
+  position: absolute;
+  border-radius: 50%;
+  display: block;
+}
+
+.wipro-rings .ring-1 {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid #3B82F6;
+}
+
+.wipro-rings .ring-2 {
+  width: 11px;
+  height: 11px;
+  border: 1.5px solid #10B981;
+}
+
+.wipro-rings .ring-3 {
+  width: 5px;
+  height: 5px;
+  background: #F59E0B;
+}
+
+.wipro-text {
+  font-family: var(--font-heading);
+  font-size: 15.5px;
+  font-weight: 900;
+  color: #0F172A;
+  text-transform: lowercase;
+}
+
+.hafele-text {
+  color: #E30613;
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+}
+
+.jacobs-text {
+  color: #007CC2;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.arcadis-text {
+  color: #FF5000;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: -0.4px;
+}
+
+@media (max-width: 640px) {
+  .partners-title {
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    margin-bottom: var(--space-4);
+  }
+
+  .partners-slider {
+    gap: 16px 20px;
+  }
+
+  .partner-logo-box {
+    flex: 0 0 calc(50% - 12px);
+    max-width: calc(50% - 12px);
+    opacity: 0.65;
+    filter: grayscale(0%); /* Show colors on mobile directly for premium vibe */
+  }
+
+  .partner-logo-inner {
+    transform: scale(0.9);
+  }
 }

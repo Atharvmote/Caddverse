@@ -33,7 +33,7 @@ export const CtaBanner: React.FC = () => {
 
           {/* Right Action */}
           <div className="cta-right-content">
-            <a href="#courses" className="btn btn-experts">
+            <a href="#inquiry" className="btn btn-experts">
               Talk To Our Experts
               <ArrowRight size={14} style={{ marginLeft: '6px' }} />
             </a>

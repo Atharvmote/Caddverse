@@ -286,26 +286,28 @@
 }
 
 .about-subtitle {
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   font-size: 18.5px;
-  font-weight: 700;
-  color: var(--primary-navy);
-  line-height: 1.45;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-top: 14px;
   margin-bottom: 0;
   max-width: 660px;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 /* Centered divider accent */
 .about-divider {
-  width: 50px;
+  width: 70%;
+  max-width: 220px;
   height: 3.5px;
   background: linear-gradient(90deg, #0044FF, #091e4a);
   border-radius: 99px;
-  margin: 18px auto 0 auto;
+  margin: 14px auto 18px auto;
 }
 
 @media (max-width: 768px) {
@@ -333,8 +335,36 @@
 
 @media (max-width: 580px) {
   .vision-mission-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .vision-mission-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 16px 10px !important;
+    border-radius: 14px !important;
+  }
+
+  .vm-icon-header {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-bottom: 8px !important;
+    width: 100% !important;
+  }
+
+  .vm-title {
+    font-size: 12.5px !important;
+  }
+
+  .vm-desc {
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0 !important;
   }
 }
 
@@ -350,6 +380,28 @@
     0 4px 10px rgba(0, 68, 255, 0.01);
   cursor: pointer;
   transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.vision-mission-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--royal-blue), var(--electric-blue), var(--accent-blue));
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  z-index: 10;
+}
+
+.vision-mission-card:hover::after {
+  transform: scaleX(1);
 }
 
 .vm-icon-header {

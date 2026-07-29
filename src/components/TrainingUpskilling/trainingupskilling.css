@@ -68,21 +68,24 @@
 
 .upskilling-subtitle {
   font-family: var(--font-body);
-  font-size: 16.5px;
+  font-size: 18.5px;
+  font-weight: 400;
   color: var(--text-secondary);
   line-height: 1.5;
+  margin-top: 14px;
   max-width: 680px;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  opacity: 0.9;
 }
-
 .upskilling-divider {
-  width: 50px;
+  width: 70%;
+  max-width: 220px;
   height: 3.5px;
   background: linear-gradient(90deg, #0044FF, #091e4a);
   border-radius: 99px;
-  margin: 18px auto 0 auto;
+  margin: 14px auto 18px auto;
 }
 
 /* Layout Grid */
@@ -109,6 +112,7 @@
   align-items: flex-start;
   transition: all var(--transition-normal);
   position: relative;
+  overflow: hidden;
 }
 
 .upskilling-card:hover {
@@ -117,6 +121,26 @@
   box-shadow: 
     0 20px 45px rgba(9, 13, 22, 0.06),
     0 4px 15px rgba(0, 68, 255, 0.02);
+}
+
+.upskilling-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--royal-blue), var(--electric-blue), var(--accent-blue));
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  z-index: 10;
+}
+
+.upskilling-card:hover::after {
+  transform: scaleX(1);
 }
 
 .card-top-icon {
@@ -336,5 +360,43 @@
   }
   .benefits-card {
     padding: 30px 20px;
+  }
+}
+
+@media (max-width: 580px) {
+  .benefits-title {
+    text-align: center !important;
+  }
+
+  .benefits-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .benefit-item {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 12px 6px !important;
+    gap: 8px !important;
+    border-radius: 10px !important;
+  }
+
+  .benefit-icon {
+    width: 28px !important;
+    height: 28px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .benefit-icon svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .benefit-text h4 {
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+    text-align: center !important;
   }
 }

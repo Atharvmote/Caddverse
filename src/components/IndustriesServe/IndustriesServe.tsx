@@ -36,10 +36,10 @@ export const IndustriesServe: React.FC = () => {
           <h2 className="section-title">
             Industries <span className="text-highlight">We Serve</span>
           </h2>
+          <div className="industries-divider" />
           <p className="section-desc">
             Delivering engineering excellence across diverse sectors and verticals
           </p>
-          <div className="industries-divider" />
         </div>
 
         {/* Industries Grid */}

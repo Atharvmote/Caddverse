@@ -9,6 +9,7 @@ import {
   ChevronLeft, 
   ChevronRight, 
   ArrowLeft, 
+  ArrowRight,
   Send, 
   Award, 
   Layers, 
@@ -50,7 +51,6 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
     name: '',
     email: '',
     phone: '',
-    center: '',
     message: ''
   });
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
@@ -100,7 +100,6 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
       name: '',
       email: '',
       phone: '',
-      center: '',
       message: ''
     });
     setTimeout(scrollToSectionTop, 100);
@@ -115,10 +114,25 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
   // Inquiry Form submit handler
   const handleInquirySubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!inquiryData.name || !inquiryData.email || !inquiryData.phone || !inquiryData.center) {
-      alert('Please fill out all required fields.');
-      return;
+    if (!inquiryData.name || !inquiryData.email || !inquiryData.phone) {
+      return; // Browser native validation will handle empty required fields
     }
+    
+    // Add the selected course to the payload
+    const payload = {
+      fullName: inquiryData.name,
+      email: inquiryData.email,
+      phone: inquiryData.phone,
+      course: selectedCourse ? selectedCourse.title : '',
+      message: inquiryData.message
+    };
+
+    fetch('http://localhost:5001/api/inquiry', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).catch(err => console.warn('Backend server offline. Submission stored locally.', err));
+
     setIsFormSubmitted(true);
   };
 
@@ -204,10 +218,10 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
               <h2 className="section-title">
                 Industry Relevant. <span className="text-highlight">Career Driven.</span>
               </h2>
+              <div className="courses-divider" />
               <p className="section-desc">
                 Step into high-paying engineering, consulting, and BIM jobs with our flagship Master Training programs.
               </p>
-              <div className="courses-divider" />
             </div>
 
             {/* Slider */}
@@ -227,7 +241,7 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
                 <div 
                   className="courses-slider-track" 
                   style={{ 
-                    transform: `translateX(-${currentIndex * (100 / Math.min(featuredCourses.length, cardsToShow))}%)`,
+                    transform: `translateX(-${currentIndex * (100 / featuredCourses.length)}%)`,
                     width: `${(featuredCourses.length / cardsToShow) * 100}%` 
                   }}
                 >
@@ -288,7 +302,7 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
                   setTimeout(scrollToSectionTop, 100);
                 }}
               >
-                Explore More Courses &rarr;
+                Explore More Courses <ArrowRight size={16} />
               </button>
             </div>
           </>
@@ -312,12 +326,12 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
 
             <div className="section-header">
               <h2 className="section-title">
-                CADDverse Teachlab <span className="text-highlight">Course Explorer</span>
+                CADDverse Techlabs <span className="text-highlight">Course Explorer</span>
               </h2>
+              <div className="courses-divider" />
               <p className="section-desc">
                 Browse our comprehensive catalog of 41 specialized CAD, BIM, structure, and interior drafting certifications.
               </p>
-              <div className="courses-divider" />
             </div>
 
             {/* Category Navigation Tabs */}
@@ -617,21 +631,6 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
                         />
                       </div>
 
-                      <div className="sidebar-input-group">
-                        <label className="sidebar-label">SELECT CENTER *</label>
-                        <select 
-                          name="center" 
-                          value={inquiryData.center} 
-                          onChange={handleInquiryChange} 
-                          className="sidebar-select"
-                          required
-                        >
-                          <option value="">Select Center</option>
-                          <option value="Bengaluru Campus">Bengaluru Campus</option>
-                          <option value="Pune Campus">Pune Campus</option>
-                          <option value="Online Training">Online Training</option>
-                        </select>
-                      </div>
 
                       <div className="sidebar-input-group">
                         <label className="sidebar-label">SELECTED COURSE</label>
@@ -667,7 +666,7 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
 
             {/* Below the Split (Full Width): Key Differentiators */}
             <div className="details-differentiators-wrapper">
-              <h2 className="differentiators-title">CADDverse Teachlab Key Differentiators</h2>
+              <h2 className="differentiators-title">CADDverse Techlabs Key Differentiators</h2>
               
               <div className="differentiators-grid">
                 

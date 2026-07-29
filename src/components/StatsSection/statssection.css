@@ -50,8 +50,9 @@
 
 @media (max-width: 580px) {
   .stats-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-3);
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 24px 12px !important;
   }
 }
 
@@ -95,12 +96,11 @@
     display: none !important;
   }
   .stat-box {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding-bottom: var(--space-2);
-  }
-  .stat-box:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
   }
 }
 

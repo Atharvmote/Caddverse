@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
   /* Colors */
@@ -16,9 +16,9 @@
   --shadow-lg: rgba(9, 13, 22, 0.04);
   --glow-blue: rgba(37, 99, 235, 0.1);
   
-  /* Fonts - Apple / Microsoft / Vercel Ultra-Modern Tech Stack */
-  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  /* Fonts - Premium Designer Combination */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
   
   /* Spacing (8px Grid System) */
   --space-1: 8px;
@@ -220,18 +220,17 @@ a {
   line-height: 1.25 !important;
   color: var(--primary-navy) !important;
   letter-spacing: -0.025em !important;
-  margin-bottom: 20px !important;
+  margin-bottom: 2px !important;
   display: inline-block !important;
   position: relative !important;
-  border-bottom: 4px solid #0044FF !important;
-  padding-bottom: 12px !important;
   text-align: center !important;
 }
 
 .section-desc {
   font-size: 18px;
+  font-weight: 400;
   color: var(--text-secondary);
-  margin-top: 8px;
+  margin-top: 0px;
 }
 
 /* Centered Header container styling */
@@ -249,14 +248,21 @@ a {
   margin-bottom: 40px !important;
 }
 
-/* Hide all old manual divider elements */
+/* Style all manual divider elements globally */
 .about-divider,
 .courses-divider,
 .why-divider,
 .industries-divider,
 .cert-divider,
-.upskilling-divider {
-  display: none !important;
+.upskilling-divider,
+.inquiry-divider {
+  display: block !important;
+  width: 75%;
+  max-width: 320px;
+  height: 4px;
+  background: linear-gradient(90deg, #0044FF, #091e4a);
+  border-radius: 99px;
+  margin: 8px auto 12px auto !important;
 }
 
 @media (max-width: 768px) {

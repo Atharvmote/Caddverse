@@ -47,12 +47,12 @@ export const AboutCaddverse: React.FC = () => {
         {/* Centered Section Header */}
         <div className="about-header-centered">
           <h2 className="section-title about-title">
-            About <span className="text-highlight">CADDverse Teachlab</span>
+            About <span className="text-highlight">CADDverse Techlabs</span>
           </h2>
+          <div className="about-divider" />
           <p className="about-subtitle">
             A trusted partner in engineering excellence and professional development
           </p>
-          <div className="about-divider" />
         </div>
 
         <motion.div 
@@ -124,7 +124,7 @@ export const AboutCaddverse: React.FC = () => {
                   <div className="about-feature-icon-wrapper">
                     <GraduationCap size={22} className="about-icon" />
                   </div>
-                  <span className="about-feature-title">TRAIN</span>
+                  <span className="about-feature-title">TRAINING</span>
                 </motion.div>
 
               </div>
@@ -151,11 +151,11 @@ export const AboutCaddverse: React.FC = () => {
           {/* Right Column: About Content */}
           <motion.div className="about-content" variants={itemVariants}>
             <p className="about-desc">
-              Founded in 2013, Caddverse is a premier engineering design and training institute dedicated to delivering innovative consultancy and professional training solutions across various engineering disciplines.
+              CADDverse Techlabs is a next-generation Engineering Technology platform committed to nurturing skilled professionals and delivering innovative design solutions through advanced CAD-driven methodologies. We empower students, engineers, and organizations with industry-aligned knowledge, cutting-edge tools, and practical expertise to thrive in the evolving engineering landscape.
             </p>
             
             <p className="about-desc">
-              We help businesses optimize their design processes while enabling students and professionals to acquire industry-relevant CAD, BIM, and CAE skills. Our mission is to create a strong ecosystem where engineering expertise, innovation, and practical learning come together to drive career growth and success.
+              Alongside our training excellence, we provide comprehensive Engineering Design & Consulting Services, supporting industries with solutions in 3D Modeling, CAD Drafting, Design Optimization, BIM Coordination, and Digital Product Development. Our approach bridges the gap between theoretical learning and real-world industrial applications.
             </p>
 
             {/* Vision and Mission Split */}
