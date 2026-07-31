@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
   /* Colors */
@@ -16,9 +16,9 @@
   --shadow-lg: rgba(9, 13, 22, 0.04);
   --glow-blue: rgba(37, 99, 235, 0.1);
   
-  /* Fonts - Premium Designer Combination */
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
+  /* Fonts - Ultra Modern & Premium (Geist & Inter) */
+  --font-heading: 'Geist', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
   /* Spacing (8px Grid System) */
   --space-1: 8px;
@@ -51,13 +51,15 @@ html {
   overflow-x: hidden;
 }
 
+/* Typography & Polish */
 body {
   font-family: var(--font-body);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--text);
   background-color: var(--background);
   overflow-x: hidden;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -71,17 +73,36 @@ body {
   overflow-x: hidden;
 }
 
-/* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   color: var(--primary-navy);
+  line-height: 1.12;
+  text-rendering: optimizeLegibility;
+}
+
+h1 {
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+h2 {
   font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
+}
+
+h3 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 p {
   color: var(--text-secondary);
+  font-weight: 400;
 }
 
 a {
@@ -316,3 +337,51 @@ a {
   -webkit-text-fill-color: transparent;
   display: inline-block;
 }
+
+/* ========================================================
+   UNIFIED HOVER/ACTIVE STATES FOR BLUE GRADIENT BUTTONS
+   ======================================================== */
+
+.btn-primary,
+.btn-explore,
+.btn-inquire,
+.preview-cta-link,
+.btn-card-action,
+.btn-submit-quote,
+.btn-submit-inquiry,
+.btn-enroll-card,
+.btn-explore-more-courses,
+.btn-sidebar-submit {
+  transition: all var(--transition-spring, 0.4s cubic-bezier(0.16, 1, 0.3, 1)) !important;
+}
+
+.btn-primary:hover,
+.btn-explore:hover,
+.btn-inquire:hover,
+.preview-cta-link:hover,
+.btn-card-action:not(.btn-outline):hover,
+.btn-submit-quote:hover,
+.btn-submit-inquiry:hover,
+.btn-enroll-card:hover,
+.btn-explore-more-courses:hover,
+.btn-sidebar-submit:hover {
+  transform: translateY(-2.5px) scale(1.025) !important;
+  box-shadow: 
+    0 10px 25px rgba(0, 68, 255, 0.25),
+    0 0 0 4px rgba(0, 68, 255, 0.15) !important;
+}
+
+.btn-primary:active,
+.btn-explore:active,
+.btn-inquire:active,
+.preview-cta-link:active,
+.btn-card-action:not(.btn-outline):active,
+.btn-submit-quote:active,
+.btn-submit-inquiry:active,
+.btn-enroll-card:active,
+.btn-explore-more-courses:active,
+.btn-sidebar-submit:active {
+  transform: translateY(0) scale(0.98) !important;
+  box-shadow: 0 4px 10px rgba(0, 68, 255, 0.15) !important;
+}
+

@@ -333,12 +333,7 @@
   font-weight: 750;
   text-decoration: none;
   cursor: pointer;
-  transition: all var(--transition-normal);
-}
-
-.btn-enroll-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 68, 255, 0.22);
-  transform: translateY(-1px);
+  transition: all var(--transition-spring);
 }
 
 .btn-details-card {
@@ -382,11 +377,6 @@
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(0, 68, 255, 0.15);
   transition: all var(--transition-spring);
-}
-
-.btn-explore-more-courses:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 68, 255, 0.28);
 }
 
 
@@ -882,11 +872,6 @@
   box-shadow: 0 6px 20px rgba(0, 68, 255, 0.18);
   margin-top: 10px;
   transition: all var(--transition-spring);
-}
-
-.btn-sidebar-submit:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 68, 255, 0.28);
 }
 
 /* Sidebar Success State */
