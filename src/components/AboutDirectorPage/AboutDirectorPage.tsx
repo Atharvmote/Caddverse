@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowLeft, Sparkles, Quote, Award, BookOpen, Heart } from 'lucide-react';
+import { ArrowLeft, Quote, Award, BookOpen, Heart } from 'lucide-react';
 import '../TermsAndConditions/terms.css';
-import director1Img from '../../assets/director.png'; // Himanshu Kulkarni
-import directorImg from  '../../assets/director1.jpeg'; // Anshul Shripad
+import director1Img from '../../assets/director1.jpeg'; // Himanshu Kulkarni
+import directorImg from '../../assets/director.png'; // Anshul Shripad
 import director3Img from '../../assets/director3.png'; // Mohini Kulkarni
 
 interface AboutDirectorPageProps {
@@ -15,8 +15,8 @@ const directorsData = {
     role: 'Director & Co-Founder',
     company: 'Caddverse Techlabs LLP',
     quote: '"Innovation is the bridge between engineering imagination and reality."',
-    image: director1Img,
-    imagePosition: 'center 5%',
+    image: directorImg,
+    imagePosition: '58% center',
     bio: [
       "Mr. Himanshu Kulkarni is the Director & Co-Founder of Caddverse Techlabs LLP, leading the organization's technological roadmap, corporate partnerships, and operational strategy. With over 7+ years of engineering leadership and academic experience, he is dedicated to establishing next-generation engineering education standards.",
       "His expertise spans advanced structural analysis, BIM coordination, digital twins integration, and technological automation in AEC (Architecture, Engineering, and Construction). Himanshu co-founded Caddverse Techlabs with a vision to build an industry-aligned learning ecosystem where computational design meets practical implementation.",
@@ -80,11 +80,11 @@ const directorsData = {
   },
   anshul: {
     name: 'Mr. Anshul Shripad',
-    role: 'Director & Co-Founder',
+    role: 'Director & Head of Technical',
     company: 'Caddverse Techlabs LLP',
     quote: '"Engineering Innovation. Empowering Future Talent."',
-    image: directorImg,
-    imagePosition: '58% center',
+    image: director1Img,
+    imagePosition: 'center 5%',
     bio: [
       "Mr. Anshul Shripad is the Director & Co-Founder of Caddverse Techlabs LLP, an engineering technology company committed to transforming technical education, engineering consulting, and product development through innovation, practical learning, and industry collaboration.",
       "With over 6+ years of professional experience in engineering design, CAD technologies, product development, and technical consulting, he is passionate about developing industry-ready engineers and delivering engineering solutions that create real business value.",
@@ -213,10 +213,6 @@ export const AboutDirectorPage: React.FC<AboutDirectorPageProps> = ({ onBack }) 
 
         {/* Page Header */}
         <div className="terms-header-centered">
-          <div className="quote-badge" style={{ margin: '0 auto 16px auto', display: 'inline-flex' }}>
-            <Sparkles size={13} style={{ marginRight: '6px' }} />
-            LEADERSHIP PROFILES
-          </div>
           <h2 className="section-title">
             Meet Our <span className="text-highlight">Leadership Team</span>
           </h2>
@@ -283,6 +279,7 @@ export const AboutDirectorPage: React.FC<AboutDirectorPageProps> = ({ onBack }) 
                 background: 'rgba(9, 30, 74, 0.03)'
               }}>
                 <img 
+                  key={activeTab}
                   src={activeDirector.image} 
                   alt={activeDirector.name} 
                   style={{
