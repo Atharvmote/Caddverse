@@ -97,19 +97,16 @@
   z-index: 5;
 }
 
-
-
 /* Premium Card Style */
 .industry-card {
   background: var(--white);
   border: 1px solid rgba(15, 23, 42, 0.06);
   border-radius: 16px; /* Sleek, professional rounded corners */
-  padding: 36px 20px;
+  padding: 30px 22px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: flex-start;
   box-shadow: 0 4px 20px rgba(9, 13, 22, 0.015);
   position: relative;
   transition: all var(--transition-normal);
@@ -156,7 +153,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   transition: all 0.25s ease;
 }
 
@@ -171,71 +168,87 @@
 /* Title text */
 .industry-name {
   font-family: var(--font-heading);
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 750;
   color: var(--primary-navy);
   letter-spacing: 0.8px;
   line-height: 1.4;
   text-transform: uppercase;
   transition: color 0.25s ease;
+  margin-bottom: 6px;
 }
 
 .industry-card:hover .industry-name {
   color: #0044FF;
 }
 
-@media (max-width: 768px) {
+/* Points list styling */
+.industry-points-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 14px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-self: stretch;
+  text-align: left;
+}
+
+.industry-points-list li {
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  position: relative;
+  padding-left: 14px;
+  font-weight: 550;
+  transition: color 0.25s ease;
+}
+
+.industry-points-list li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 6px;
+  width: 4.5px;
+  height: 4.5px;
+  background-color: rgba(9, 30, 74, 0.3);
+  border-radius: 50%;
+  transition: all 0.25s ease;
+}
+
+.industry-card:hover .industry-points-list li {
+  color: var(--primary-navy);
+}
+
+.industry-card:hover .industry-points-list li::before {
+  background-color: #0044FF;
+  transform: scale(1.2);
+}
+
+/* Responsive Grid Breakpoints */
+@media (max-width: 1024px) {
   .industries-grid {
-    gap: 10px !important;
-  }
-
-  .industry-card {
-    padding: 20px 8px !important;
-    border-radius: 12px !important;
-  }
-
-  .industry-icon-container {
-    width: 44px !important;
-    height: 44px !important;
-    margin-bottom: 12px !important;
-  }
-
-  .industry-icon-container svg {
-    width: 20px !important;
-    height: 20px !important;
-  }
-
-  .industry-name {
-    font-size: 9.5px !important;
-    letter-spacing: 0.2px !important;
-    line-height: 1.25 !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .industries-grid {
-    gap: 6px !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
   }
-
+  
   .industry-card {
-    padding: 12px 2px !important;
-    border-radius: 10px !important;
+    padding: 24px 20px !important;
   }
-
-  .industry-icon-container {
-    width: 36px !important;
-    height: 36px !important;
-    margin-bottom: 8px !important;
-  }
-
-  .industry-icon-container svg {
-    width: 16px !important;
-    height: 16px !important;
-  }
-
+  
   .industry-name {
-    font-size: 8px !important;
-    letter-spacing: 0.1px !important;
-    line-height: 1.15 !important;
+    font-size: 12.5px !important;
+  }
+  
+  .industry-points-list li {
+    font-size: 12px !important;
   }
 }

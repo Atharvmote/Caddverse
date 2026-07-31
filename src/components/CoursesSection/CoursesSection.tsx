@@ -330,7 +330,7 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
               </h2>
               <div className="courses-divider" />
               <p className="section-desc">
-                Browse our comprehensive catalog of 41 specialized CAD, BIM, structure, and interior drafting certifications.
+                Browse our comprehensive catalog of specialized CAD, BIM, structure, and interior drafting certifications.
               </p>
             </div>
 

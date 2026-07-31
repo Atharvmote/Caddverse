@@ -175,7 +175,7 @@ export const BlogsPage: React.FC<BlogsPageProps> = ({ onBack }) => {
                 <h3 style={{
                   fontFamily: 'var(--font-heading)',
                   fontSize: '19px',
-                  fontWeight: '850',
+                  fontWeight: '700',
                   color: 'var(--primary-navy)',
                   lineHeight: '1.3',
                   marginBottom: '10px'
@@ -294,7 +294,7 @@ export const BlogsPage: React.FC<BlogsPageProps> = ({ onBack }) => {
                   <h1 style={{
                     fontFamily: 'var(--font-heading)',
                     fontSize: '26px',
-                    fontWeight: '900',
+                    fontWeight: '700',
                     color: 'var(--primary-navy)',
                     lineHeight: '1.25',
                     marginBottom: '16px',
