@@ -898,21 +898,15 @@ app.post('/api/inquiry', inquiryLimiter, async (req, res) => {
       // Dispatch mail promises asynchronously to minimize response delays
       transporter.sendMail(userMailOptions)
         .then((info) => {
-          const previewUrl = nodemailer.getTestMessageUrl(info);
-          if (previewUrl) {
-            console.log(`[USER EMAIL TEST PREVIEW]: ${previewUrl}`);
-          }
+          console.log(`✅ Student email sent successfully to ${email}. MessageID: ${info.messageId}`);
         })
-        .catch(err => console.error('Student email send error:', err.message));
+        .catch(err => console.error('❌ Student email send error:', err.message));
 
       transporter.sendMail(adminMailOptions)
         .then((info) => {
-          const previewUrl = nodemailer.getTestMessageUrl(info);
-          if (previewUrl) {
-            console.log(`[ADMIN EMAIL TEST PREVIEW]: ${previewUrl}`);
-          }
+          console.log(`✅ Admin lead notification email sent successfully to ${senderAddress}. MessageID: ${info.messageId}`);
         })
-        .catch(err => console.error('Admin email send error:', err.message));
+        .catch(err => console.error('❌ Admin email send error:', err.message));
     }
 
     return res.status(200).json({
