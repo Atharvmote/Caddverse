@@ -252,7 +252,17 @@ async function dispatchEmail({ to, subject, html, fromName = 'CADDverse Techlabs
         console.log(`✅ [Resend HTTP API] Email sent to ${to}. ID: ${data.id}`);
         return true;
       } else {
-        console.error(`❌ [Resend HTTP API] Error:`, data);
+        console.error(`❌ [Resend HTTP API] Error:`, data.message || data);
+        const ownerEmail = process.env.SMTP_USER || 'anshul.caddverse@gmail.com';
+        if (data.statusCode === 403 && to !== ownerEmail) {
+          console.log(`⚠️ Resend in test mode. Redirecting lead notification to admin (${ownerEmail})...`);
+          return await dispatchEmail({
+            to: ownerEmail,
+            subject: `[LEAD NOTIFICATION] ${subject}`,
+            html: html,
+            fromName
+          });
+        }
       }
     } catch (err) {
       console.error(`❌ [Resend HTTP API] Fetch Error:`, err.message);
