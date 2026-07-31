@@ -242,7 +242,7 @@ export const Header: React.FC = () => {
 
               return (
                 <div key={item.label} className="mobile-nav-item-group">
-                  {item.href ? (
+                  {item.href && !item.subLinks ? (
                     <a
                       href={item.href}
                       className={`mobile-nav-link ${isActive ? 'mobile-nav-link-active' : ''}`}

@@ -1224,14 +1224,16 @@ app.post('/api/notify-early-access', inquiryLimiter, async (req, res) => {
 
 // 2. Admin Login
 app.post('/api/admin/login', (req, res) => {
-  const { password } = req.body;
+  const { email, password } = req.body;
 
-  if (!password) {
-    return res.status(400).json({ success: false, message: 'Password required.' });
+  if (!email || !password) {
+    return res.status(400).json({ success: false, message: 'Email and Password are required.' });
   }
 
-  const targetPassword = process.env.ADMIN_PASSWORD || 'admin123';
-  const isMatch = (password === targetPassword);
+  const targetEmail = 'anshul.caddverse@gmail.com';
+  const targetPassword = process.env.ADMIN_PASSWORD || '9049000010';
+  
+  const isMatch = (email.toLowerCase().trim() === targetEmail && password === targetPassword);
 
   if (isMatch) {
     const token = 'session-' + crypto.randomBytes(16).toString('hex');
@@ -1258,12 +1260,19 @@ app.get('/api/admin/inquiries', async (req, res) => {
 
   try {
     let list;
+    let corpList;
     if (dbConnected) {
       list = await Inquiry.find().sort({ createdAt: -1 });
+      corpList = await CorporateQuote.find().sort({ createdAt: -1 });
     } else {
       list = getLocalInquiries();
+      corpList = getLocalCorpQuotes();
     }
-    return res.status(200).json({ success: true, inquiries: list });
+    return res.status(200).json({ 
+      success: true, 
+      inquiries: list,
+      corporateQuotes: corpList
+    });
   } catch (err) {
     console.error('Failed to fetch admin inquiries:', err.message);
     return res.status(500).json({ success: false, message: 'Database query execution failure.' });
