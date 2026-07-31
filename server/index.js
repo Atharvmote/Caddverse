@@ -229,6 +229,56 @@ async function initMailer() {
   }
 }
 
+// --- UNIVERSAL EMAIL DISPATCHER (Supports HTTP API & SMTP) ---
+async function dispatchEmail({ to, subject, html, fromName = 'CADDverse Techlabs' }) {
+  // 1. Try Resend HTTP API (Port 443 - Bypasses Render SMTP port blocking)
+  if (process.env.RESEND_API_KEY) {
+    try {
+      const res = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          from: `${fromName} <onboarding@resend.dev>`,
+          to: Array.isArray(to) ? to : [to],
+          subject: subject,
+          html: html
+        })
+      });
+      const data = await res.json();
+      if (res.ok) {
+        console.log(`✅ [Resend HTTP API] Email sent to ${to}. ID: ${data.id}`);
+        return true;
+      } else {
+        console.error(`❌ [Resend HTTP API] Error:`, data);
+      }
+    } catch (err) {
+      console.error(`❌ [Resend HTTP API] Fetch Error:`, err.message);
+    }
+  }
+
+  // 2. Try Nodemailer SMTP (Fallback)
+  if (transporter) {
+    try {
+      const senderAddress = process.env.SMTP_USER || 'anshul.caddverse@gmail.com';
+      const info = await transporter.sendMail({
+        from: `"${fromName}" <${senderAddress}>`,
+        to: to,
+        subject: subject,
+        html: html
+      });
+      console.log(`✅ [SMTP] Email sent to ${to}. MessageID: ${info.messageId}`);
+      return true;
+    } catch (err) {
+      console.error(`❌ [SMTP Error]:`, err.message);
+    }
+  }
+
+  return false;
+}
+
 initMailer();
 
 // Hash Password Helper (SHA-256 secure hash)
@@ -874,40 +924,22 @@ app.post('/api/inquiry', inquiryLimiter, async (req, res) => {
       savedInquiry = backupInquiry;
     }
 
-    // Send Professional Emails
-    if (transporter) {
-      const senderAddress = process.env.SMTP_USER || 'anshul.caddverse@gmail.com';
+    // Send Professional Emails via dispatchEmail
+    const senderAddress = process.env.SMTP_USER || 'anshul.caddverse@gmail.com';
 
-      // 1. Direct confirmation mail to Student
-      const userMailOptions = {
-        from: `"CADDverse Techlabs" <${senderAddress}>`,
-        to: email,
-        subject: `Your CADDverse Techlabs seat reservation: ${course}`,
-        html: buildUserEmail(fullName, course),
-        attachments: getBrochureAttachment() ? [getBrochureAttachment()] : []
-      };
+    dispatchEmail({
+      to: email,
+      subject: `Your CADDverse Techlabs seat reservation: ${course}`,
+      html: buildUserEmail(fullName, course),
+      fromName: 'CADDverse Techlabs'
+    });
 
-      // 2. Alert notification mail to Admin
-      const adminMailOptions = {
-        from: `"CADDverse Lead Capture" <${senderAddress}>`,
-        to: senderAddress, // Admin recipient email
-        subject: `[New Lead Alert] ${fullName} - ${course}`,
-        html: buildAdminEmail(savedInquiry)
-      };
-
-      // Dispatch mail promises asynchronously to minimize response delays
-      transporter.sendMail(userMailOptions)
-        .then((info) => {
-          console.log(`✅ Student email sent successfully to ${email}. MessageID: ${info.messageId}`);
-        })
-        .catch(err => console.error('❌ Student email send error:', err.message));
-
-      transporter.sendMail(adminMailOptions)
-        .then((info) => {
-          console.log(`✅ Admin lead notification email sent successfully to ${senderAddress}. MessageID: ${info.messageId}`);
-        })
-        .catch(err => console.error('❌ Admin email send error:', err.message));
-    }
+    dispatchEmail({
+      to: senderAddress,
+      subject: `[New Lead Alert] ${fullName} - ${course}`,
+      html: buildAdminEmail(savedInquiry),
+      fromName: 'CADDverse Lead Capture'
+    });
 
     return res.status(200).json({
       success: true,
