@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { API_BASE_URL } from '../../utils/api';
 import { 
   Clock, 
   MapPin, 
@@ -127,7 +128,7 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
       message: inquiryData.message
     };
 
-    fetch('http://localhost:5001/api/inquiry', {
+    fetch(`${API_BASE_URL}/inquiry`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldAlert, LogOut, Search, FileDown, Eye, Calendar, Award, Phone, Mail, GraduationCap } from 'lucide-react';
 import './adminpanel.css';
+import { API_BASE_URL } from '../../utils/api';
 
 interface Lead {
   id: string;
@@ -40,7 +41,7 @@ export const AdminPanel: React.FC = () => {
     setError('');
 
     try {
-      const res = await fetch('http://localhost:5001/api/admin/login', {
+      const res = await fetch(`${API_BASE_URL}/admin/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password })
@@ -71,7 +72,7 @@ export const AdminPanel: React.FC = () => {
 
   const fetchLeads = async (sessionToken: string) => {
     try {
-      const res = await fetch('http://localhost:5001/api/admin/inquiries', {
+      const res = await fetch(`${API_BASE_URL}/admin/inquiries`, {
         headers: {
           'Authorization': `Bearer ${sessionToken}`
         }

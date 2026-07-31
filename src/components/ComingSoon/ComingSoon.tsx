@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Send, Sparkles, Cpu, Globe, GraduationCap, Briefcase, Film, HeartHandshake, Eye } from 'lucide-react';
 import './comingsoon.css';
+import { API_BASE_URL } from '../../utils/api';
 
 interface ComingSoonProps {
   title: string;
@@ -25,7 +26,7 @@ export const ComingSoon: React.FC<ComingSoonProps> = ({ title, onBack }) => {
       portal: title
     };
 
-    fetch('http://localhost:5001/api/notify-early-access', {
+    fetch(`${API_BASE_URL}/notify-early-access`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

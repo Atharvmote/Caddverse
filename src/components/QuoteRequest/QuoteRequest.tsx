@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronDown, Send, ArrowLeft, Check, Sparkles, Briefcase, Award, Zap, ShieldCheck } from 'lucide-react';
 import './quoterequest.css';
+import { API_BASE_URL } from '../../utils/api';
 
 interface QuoteRequestProps {
   onBack: () => void;
@@ -111,7 +112,7 @@ export const QuoteRequest: React.FC<QuoteRequestProps> = ({ onBack }) => {
     });
 
     // Send backend request in the background
-    fetch('http://localhost:5001/api/corporate-quote', {
+    fetch(`${API_BASE_URL}/corporate-quote`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

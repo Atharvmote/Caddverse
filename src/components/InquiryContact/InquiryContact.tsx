@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Send, MapPin, Phone, Mail, Landmark, Check, ChevronDown } from 'lucide-react';
 import './inquirycontact.css';
+import { API_BASE_URL } from '../../utils/api';
 
 const courseOptions = [
    "General Inquiry / Other",
@@ -70,7 +71,7 @@ export const InquiryContact: React.FC = () => {
     });
 
     // Fire network call in the background
-    fetch('http://localhost:5001/api/inquiry', {
+    fetch(`${API_BASE_URL}/inquiry`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dataToSend)

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, Briefcase, Send, Check, Sparkles, Award, Users, Compass } from 'lucide-react';
 import '../QuoteRequest/quoterequest.css';
+import { API_BASE_URL } from '../../utils/api';
 
 interface CareersPageProps {
   onBack: () => void;
@@ -77,7 +78,7 @@ export const CareersPage: React.FC<CareersPageProps> = ({ onBack }) => {
     payload.append('coverLetter', formData.coverLetter);
     payload.append('resume', selectedFile);
 
-    fetch('http://localhost:5001/api/apply-career', {
+    fetch(`${API_BASE_URL}/apply-career`, {
       method: 'POST',
       body: payload
     })
