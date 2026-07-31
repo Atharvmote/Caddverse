@@ -11,6 +11,9 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5002;
 
+// Enable trust proxy for Render reverse proxy (fixes express-rate-limit warning)
+app.set('trust proxy', 1);
+
 // Setup Middleware
 app.use(cors());
 app.use(express.json());
@@ -186,15 +189,26 @@ async function initMailer() {
     console.log(`    Host: ${process.env.SMTP_HOST}:${process.env.SMTP_PORT}`);
     console.log(`    User: ${process.env.SMTP_USER}`);
     
-    transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT || '465'),
-      secure: process.env.SMTP_SECURE === 'true',
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS
-      }
-    });
+    if (process.env.SMTP_HOST.includes('gmail')) {
+      transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS
+        }
+      });
+    } else {
+      transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: parseInt(process.env.SMTP_PORT || '587'),
+        secure: process.env.SMTP_SECURE === 'true',
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS
+        },
+        tls: { rejectUnauthorized: false }
+      });
+    }
   } else {
     console.log('>>> Warning: No SMTP config found. Setting up Ethereal Mock Mailer...');
     try {
