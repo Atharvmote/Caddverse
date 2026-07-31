@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft, Sparkles, Quote, Award, BookOpen, Heart } from 'lucide-react';
 import '../TermsAndConditions/terms.css';
-import director1Img from '../../assets/director1.jpeg'; // Himanshu Kulkarni
-import directorImg from '../../assets/director.png'; // Anshul Shripad
+import director1Img from '../../assets/director.png'; // Himanshu Kulkarni
+import directorImg from  '../../assets/director1.jpeg'; // Anshul Shripad
 import director3Img from '../../assets/director3.png'; // Mohini Kulkarni
 
 interface AboutDirectorPageProps {
@@ -16,6 +16,7 @@ const directorsData = {
     company: 'Caddverse Techlabs LLP',
     quote: '"Innovation is the bridge between engineering imagination and reality."',
     image: director1Img,
+    imagePosition: 'center 5%',
     bio: [
       "Mr. Himanshu Kulkarni is the Director & Co-Founder of Caddverse Techlabs LLP, leading the organization's technological roadmap, corporate partnerships, and operational strategy. With over 7+ years of engineering leadership and academic experience, he is dedicated to establishing next-generation engineering education standards.",
       "His expertise spans advanced structural analysis, BIM coordination, digital twins integration, and technological automation in AEC (Architecture, Engineering, and Construction). Himanshu co-founded Caddverse Techlabs with a vision to build an industry-aligned learning ecosystem where computational design meets practical implementation.",
@@ -43,12 +44,47 @@ const directorsData = {
       { type: 'heart', text: '100% Placement Bootcamp Mentor' }
     ]
   },
+  mohini: {
+    name: 'Mrs. Mohini Kulkarni',
+    role: 'Director & Head of Operations',
+    company: 'Caddverse Techlabs LLP',
+    quote: '"Excellence in operations is the execution of engineering vision."',
+    image: director3Img,
+    imagePosition: 'center 15%',
+    bio: [
+      "Mrs. Mohini Kulkarni is the Director & Head of Operations at Caddverse Techlabs LLP, managing the organization's business operations, student success initiatives, and administration. With over 5+ years of experience in educational management and operations, she is instrumental in building and maintaining Caddverse's seamless operational model.",
+      "Her expertise lies in strategic planning, program management, academic coordination, and corporate alignment. She leads the operations team in establishing robust learning schedules, managing resources, and ensuring that every student gets optimal academic support and individual attention.",
+      "Co-founding Caddverse, Mohini has been a key driver behind the center's structured placement cells, mock interview systems, and career development programs. She is highly passionate about creating a supportive and motivating learning environment that helps students transition into high-paying engineering careers."
+    ],
+    message: "Our focus is entirely on the journey of the student. From the moment they enroll, we map out their training, portfolio reviews, and placement preparations. We believe that a strong operational framework ensures that no student is left behind, and every individual is given the resources to succeed in the corporate world.",
+    expertise: [
+      "Operations Management",
+      "Strategic Planning",
+      "Student Success Programs",
+      "Academic Coordination",
+      "Resources Optimization",
+      "Placement Cell Management",
+      "Career Development",
+      "Corporate Branding",
+      "Process Standardization",
+      "Educational Administration"
+    ],
+    proficiency: "Operations • Program Management • Student Mentorship • Strategic Planning • Placement Assistance • Academic Execution • Resource Management • Public Relations • Event Management",
+    vision: "To build the most efficient, student-centric operational model in technical education that guarantees quality support, organized learning timelines, and high success rates for every student at Caddverse.",
+    philosophy: "True operational leadership lies in aligning every system, process, and person toward the collective success of our learners.",
+    badges: [
+      { type: 'award', text: '5+ Years Academic Management' },
+      { type: 'book', text: 'Head of Operations' },
+      { type: 'heart', text: 'Student Success & Placement Director' }
+    ]
+  },
   anshul: {
     name: 'Mr. Anshul Shripad',
     role: 'Director & Co-Founder',
     company: 'Caddverse Techlabs LLP',
     quote: '"Engineering Innovation. Empowering Future Talent."',
     image: directorImg,
+    imagePosition: '58% center',
     bio: [
       "Mr. Anshul Shripad is the Director & Co-Founder of Caddverse Techlabs LLP, an engineering technology company committed to transforming technical education, engineering consulting, and product development through innovation, practical learning, and industry collaboration.",
       "With over 6+ years of professional experience in engineering design, CAD technologies, product development, and technical consulting, he is passionate about developing industry-ready engineers and delivering engineering solutions that create real business value.",
@@ -78,43 +114,10 @@ const directorsData = {
       { type: 'book', text: 'Automotive & Product Specialist' },
       { type: 'heart', text: 'CAD Outsourcing Director' }
     ]
-  },
-  mohini: {
-    name: 'Mrs. Mohini Kulkarni',
-    role: 'Director & Head of Operations',
-    company: 'Caddverse Techlabs LLP',
-    quote: '"Excellence in operations is the execution of engineering vision."',
-    image: director3Img,
-    bio: [
-      "Mrs. Mohini Kulkarni is the Director & Head of Operations at Caddverse Techlabs LLP, managing the organization's business operations, student success initiatives, and administration. With over 5+ years of experience in educational management and operations, she is instrumental in building and maintaining Caddverse's seamless operational model.",
-      "Her expertise lies in strategic planning, program management, academic coordination, and corporate alignment. She leads the operations team in establishing robust learning schedules, managing resources, and ensuring that every student gets optimal academic support and individual attention.",
-      "Co-founding Caddverse, Mohini has been a key driver behind the center's structured placement cells, mock interview systems, and career development programs. She is highly passionate about creating a supportive and motivating learning environment that helps students transition into high-paying engineering careers."
-    ],
-    message: "Our focus is entirely on the journey of the student. From the moment they enroll, we map out their training, portfolio reviews, and placement preparations. We believe that a strong operational framework ensures that no student is left behind, and every individual is given the resources to succeed in the corporate world.",
-    expertise: [
-      "Operations Management",
-      "Strategic Planning",
-      "Student Success Programs",
-      "Academic Coordination",
-      "Resources Optimization",
-      "Placement Cell Management",
-      "Career Development",
-      "Corporate Branding",
-      "Process Standardization",
-      "Educational Administration"
-    ],
-    proficiency: "Operations • Program Management • Student Mentorship • Strategic Planning • Placement Assistance • Academic Execution • Resource Management • Public Relations • Event Management",
-    vision: "To build the most efficient, student-centric operational model in technical education that guarantees quality support, organized learning timelines, and high success rates for every student at Caddverse.",
-    philosophy: "True operational leadership lies in aligning every system, process, and person toward the collective success of our learners.",
-    badges: [
-      { type: 'award', text: '5+ Years Academic Management' },
-      { type: 'book', text: 'Head of Operations' },
-      { type: 'heart', text: 'Student Success & Placement Director' }
-    ]
   }
 };
 
-type DirectorKey = 'himanshu' | 'anshul' | 'mohini';
+type DirectorKey = 'himanshu' | 'mohini' | 'anshul';
 
 export const AboutDirectorPage: React.FC<AboutDirectorPageProps> = ({ onBack }) => {
   const [activeTab, setActiveTab] = useState<DirectorKey>('himanshu');
@@ -286,6 +289,7 @@ export const AboutDirectorPage: React.FC<AboutDirectorPageProps> = ({ onBack }) 
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
+                    objectPosition: activeDirector.imagePosition || 'center',
                     display: 'block'
                   }}
                 />
