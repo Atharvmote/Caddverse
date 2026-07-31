@@ -60,7 +60,16 @@ export const WhatsAppWidget: React.FC = () => {
           {/* General Enquiry First */}
           <button 
             className="wa-topic-btn general-enquiry"
-            onClick={() => handleTopicClick('Hello Caddverse Techlabs! I have a general enquiry.')}
+            onClick={() => handleTopicClick(
+`Greetings CADDverse Techlabs! 👋
+
+I visited your website and would like to make a general inquiry about your services and training programs. Could you please connect me with a representative?
+
+I have also downloaded the overall brochure from the link below:
+👉 https://caddverse.in/broucher.pdf
+
+Thank you! 🙏`
+            )}
           >
             <div className="wa-topic-text">
               <span className="wa-topic-title">💬 General Enquiry / Other</span>
@@ -74,7 +83,16 @@ export const WhatsAppWidget: React.FC = () => {
             <button 
               key={course.id} 
               className="wa-topic-btn"
-              onClick={() => handleTopicClick(`Hello! I am interested in your *${course.title}* program. Could you please share more details?`)}
+              onClick={() => handleTopicClick(
+`Greetings CADDverse Techlabs! 👋
+
+I am interested in your *${course.title}* program. Could you please share more details regarding the syllabus, fee structure, and upcoming batch timings?
+
+I have also downloaded the program brochure from the link below:
+👉 https://caddverse.in/broucher.pdf
+
+Thank you! 🙏`
+              )}
             >
               <div className="wa-topic-text">
                 <span className="wa-topic-title">{course.title}</span>
