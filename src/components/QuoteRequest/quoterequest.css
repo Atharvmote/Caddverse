@@ -96,21 +96,7 @@
   line-height: 1.65;
 }
 
-/* Pillars Title */
-.pillars-section-title {
-  text-align: center;
-  margin-bottom: 24px;
-  position: relative;
-  z-index: 10;
-}
 
-.pillars-section-title h2 {
-  font-family: var(--font-heading);
-  font-size: 24px;
-  font-weight: 850;
-  color: var(--primary-navy);
-  letter-spacing: -0.5px;
-}
 
 /* Pillars grid */
 .quote-pillars-grid {
@@ -136,6 +122,8 @@
 }
 
 .pillar-card {
+  position: relative;
+  overflow: hidden;
   background: rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -146,11 +134,31 @@
   transition: all var(--transition-spring);
 }
 
+.pillar-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #0044FF, #091e4a);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  z-index: 10;
+}
+
 .pillar-card:hover {
   transform: translateY(-5px);
   background: var(--white);
   border-color: rgba(0, 68, 255, 0.15);
   box-shadow: 0 12px 30px rgba(0, 68, 255, 0.05);
+}
+
+.pillar-card:hover::after {
+  transform: scaleX(1);
 }
 
 .pillar-icon-box {
@@ -207,21 +215,23 @@
 }
 
 .form-legend-title {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 850;
   color: var(--primary-navy);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   letter-spacing: -0.3px;
+  text-align: center;
 }
 
 .form-legend-desc {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 14.5px;
   color: var(--text-secondary);
   line-height: 1.5;
   margin-bottom: 30px;
   border-bottom: 1px solid rgba(15, 23, 42, 0.05);
   padding-bottom: 20px;
+  text-align: center;
 }
 
 .quote-form-fields {

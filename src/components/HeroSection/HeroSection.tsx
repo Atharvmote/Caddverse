@@ -38,6 +38,31 @@ const AnimatedNumber: React.FC<{ value: number; suffix: string }> = ({ value, su
   );
 };
 
+// Helper function to calculate laser coordinates between logo edge (R≈65) and block card edges
+const getLaserCoords = (idx: number, isActive: boolean) => {
+  if (isActive) {
+    switch (idx) {
+      case 0: return { x1: 220, y1: 92, x2: 220, y2: 52 };
+      case 1: return { x1: 278, y1: 131, x2: 308, y2: 116 };
+      case 2: return { x1: 278, y1: 189, x2: 308, y2: 204 };
+      case 3: return { x1: 220, y1: 228, x2: 220, y2: 269 };
+      case 4: return { x1: 162, y1: 189, x2: 132, y2: 204 };
+      case 5: return { x1: 162, y1: 131, x2: 132, y2: 116 };
+      default: return { x1: 220, y1: 160, x2: 220, y2: 160 };
+    }
+  } else {
+    switch (idx) {
+      case 0: return { x1: 220, y1: 95, x2: 220, y2: 48 };
+      case 1: return { x1: 278, y1: 131, x2: 314, y2: 113 };
+      case 2: return { x1: 278, y1: 189, x2: 314, y2: 207 };
+      case 3: return { x1: 220, y1: 225, x2: 220, y2: 272 };
+      case 4: return { x1: 162, y1: 189, x2: 126, y2: 207 };
+      case 5: return { x1: 162, y1: 131, x2: 126, y2: 113 };
+      default: return { x1: 220, y1: 160, x2: 220, y2: 160 };
+    }
+  }
+};
+
 // Verticals data structure for the interactive tech core
 interface ServiceVertical {
   id: string;
@@ -247,19 +272,21 @@ export const HeroSection: React.FC = () => {
                     <circle cx="220" cy="160" r="105" className="t-ring-mid" stroke="rgba(37, 99, 235, 0.1)" strokeWidth="1" />
                     <circle cx="220" cy="160" r="65" className="t-ring-inner" stroke="rgba(37, 99, 235, 0.2)" strokeWidth="1.5" strokeDasharray="2 4" />
                     
-                    {/* Energy Beam Connections from Center Hub (220, 160) to 6 Node Positions */}
-                    {/* 0: Top (220, 30) */}
-                    <line x1="220" y1="160" x2="220" y2="30" className={`laser-beam ${activeVerticalIndex === 0 ? 'laser-beam-active' : ''}`} />
-                    {/* 1: Top Right (350, 95) */}
-                    <line x1="220" y1="160" x2="350" y2="95" className={`laser-beam ${activeVerticalIndex === 1 ? 'laser-beam-active' : ''}`} />
-                    {/* 2: Bottom Right (350, 225) */}
-                    <line x1="220" y1="160" x2="350" y2="225" className={`laser-beam ${activeVerticalIndex === 2 ? 'laser-beam-active' : ''}`} />
-                    {/* 3: Bottom (220, 290) */}
-                    <line x1="220" y1="160" x2="220" y2="290" className={`laser-beam ${activeVerticalIndex === 3 ? 'laser-beam-active' : ''}`} />
-                    {/* 4: Bottom Left (90, 225) */}
-                    <line x1="220" y1="160" x2="90" y2="225" className={`laser-beam ${activeVerticalIndex === 4 ? 'laser-beam-active' : ''}`} />
-                    {/* 5: Top Left (90, 95) */}
-                    <line x1="220" y1="160" x2="90" y2="95" className={`laser-beam ${activeVerticalIndex === 5 ? 'laser-beam-active' : ''}`} />
+                    {/* Energy Beam Connections from logo edge to block node edges */}
+                    {[0, 1, 2, 3, 4, 5].map((idx) => {
+                      const isActive = activeVerticalIndex === idx;
+                      const coords = getLaserCoords(idx, isActive);
+                      return (
+                        <line
+                          key={idx}
+                          x1={coords.x1}
+                          y1={coords.y1}
+                          x2={coords.x2}
+                          y2={coords.y2}
+                          className={`laser-beam ${isActive ? 'laser-beam-active' : ''}`}
+                        />
+                      );
+                    })}
                   </svg>
                 </div>
 
@@ -307,7 +334,7 @@ export const HeroSection: React.FC = () => {
                     <div className="preview-header">
                       <div className="preview-title-group">
                         <span className="preview-badge" style={{ borderColor: `${activeVertical.accentColor}45`, color: activeVertical.accentColor, background: `${activeVertical.accentColor}10` }}>
-                          <Sparkles size={11} /> {activeVertical.badge}
+                          <Sparkles size={10} /> {activeVertical.badge}
                         </span>
                         <h4 className="preview-heading">{activeVertical.title}</h4>
                       </div>

@@ -137,15 +137,18 @@ export const QuoteRequest: React.FC<QuoteRequestProps> = ({ onBack }) => {
             <Sparkles size={13} style={{ marginRight: '6px' }} />
             CADDVERSE ENTERPRISE TRAINING
           </div>
-          <h1 className="quote-main-title">Build the Future with CADDverse Techlabs</h1>
+          <h1 className="quote-main-title">Build the Future with <span className="text-highlight">CADDVERSE TEACHLABS</span></h1>
           <p className="quote-subtitle">
-            CADDverse Techlabs is India's next-generation Engineering Technology platform. We specialize in structuring high-impact corporate training frameworks and custom CAD, CAE, and BIM upskilling solutions that translate engineering aspirations into real-world business success.
+            <strong style={{ fontWeight: '800' }}>CADDVERSE TEACHLABS</strong> is India's next-generation Engineering Technology platform. We specialize in structuring high-impact corporate training frameworks and custom CAD, CAE, and BIM upskilling solutions that translate engineering aspirations into real-world business success.
           </p>
         </div>
 
         {/* Corporate Excellence Pillars ("How We Work") */}
-        <div className="pillars-section-title">
-          <h2>How We Train</h2>
+        <div className="pillars-header">
+          <h2 className="section-title">
+            How We <span className="text-highlight">Train</span>
+          </h2>
+          <div className="pillars-divider" />
         </div>
         <div className="quote-pillars-grid">
           {pillars.map((p, idx) => (
@@ -163,7 +166,7 @@ export const QuoteRequest: React.FC<QuoteRequestProps> = ({ onBack }) => {
         <div className="quote-form-container-box">
           <div className="quote-form-card">
             <form onSubmit={handleCorpSubmit} className="quote-form-fields">
-              <h3 className="form-legend-title">Request a Corporate Proposal</h3>
+              <h3 className="form-legend-title">Request a <span className="text-highlight">Corporate Proposal</span></h3>
               <p className="form-legend-desc">
                 Fill out the form below to receive a customized curriculum package and pricing quote matching your design team requirements.
               </p>

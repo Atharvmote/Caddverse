@@ -88,7 +88,12 @@ export const Partners: React.FC = () => {
   return (
     <section className="partners-wrapper" ref={containerRef}>
       <div className="container">
-        <div className="partners-title">Career Opportunities in Top Companies</div>
+        <div className="partners-header">
+          <h2 className="section-title">
+            Career Opportunities in <span className="text-highlight">Top Companies</span>
+          </h2>
+          <div className="partners-divider" />
+        </div>
         <div className="partners-slider">
           {recruiters.map((recruiter, idx) => (
             <motion.div

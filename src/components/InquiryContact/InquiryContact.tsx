@@ -1,15 +1,15 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Send, MapPin, Phone, Mail, Landmark, Globe, Check, ChevronDown } from 'lucide-react';
+import { Send, MapPin, Phone, Mail, Landmark, Check, ChevronDown } from 'lucide-react';
 import './inquirycontact.css';
 
 const courseOptions = [
+   "General Inquiry / Other",
   "Master Diploma in Product Design & Analysis",
   "Master In Building Information Modeling (BIM)",
   "Master Diploma in Architecture Design",
   "Master Diploma in Electrical Design",
   "Master Diploma in Building Design",
-  "Master Diploma in Interior Design",
-  "General Inquiry / Other"
+  "Master Diploma in Interior Design" 
 ];
 
 export const InquiryContact: React.FC = () => {
@@ -185,9 +185,7 @@ export const InquiryContact: React.FC = () => {
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
                 </svg>
               </a>
-              <a href="#" className="social-icon-btn" aria-label="Website">
-                <Globe size={18} />
-              </a>
+            
             </div>
 
           </div>

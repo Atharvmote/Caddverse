@@ -238,6 +238,9 @@ a {
 .about-header-centered,
 .why-header-centered,
 .cert-header,
+.partners-header,
+.differentiators-header,
+.pillars-header,
 .industries-header {
   text-align: center !important;
   display: flex !important;
@@ -254,6 +257,9 @@ a {
 .why-divider,
 .industries-divider,
 .cert-divider,
+.partners-divider,
+.differentiators-divider,
+.pillars-divider,
 .upskilling-divider,
 .inquiry-divider {
   display: block !important;

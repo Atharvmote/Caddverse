@@ -1,21 +1,9 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, ArrowRight, ArrowUp } from 'lucide-react';
+import React from 'react';
+import { Mail, Phone, MapPin, ArrowUp } from 'lucide-react';
 import logoImg from '../../assets/newmodern.png';
 import './footer.css';
 
 export const Footer: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email.trim()) {
-      setIsSubmitted(true);
-      setEmail('');
-      setTimeout(() => setIsSubmitted(false), 5000);
-    }
-  };
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -57,11 +45,6 @@ export const Footer: React.FC = () => {
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
               </a>
-              <a href="#" className="social-btn" aria-label="YouTube">
-                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11C4.483 20.455 12 20.455 12 20.455s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-              </a>
             </div>
           </div>
 
@@ -73,7 +56,6 @@ export const Footer: React.FC = () => {
               <li className="footer-link-item"><a href="#explorer">Courses</a></li>
               <li className="footer-link-item"><a href="#our-journey">Our Journey</a></li>
               <li className="footer-link-item"><a href="#about-us">About Us</a></li>
-              <li className="footer-link-item"><a href="#home">Placements</a></li>
               <li className="footer-link-item"><a href="#inquiry">Contact Us</a></li>
             </ul>
           </div>
@@ -82,12 +64,12 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className="footer-col-title">Resources</h4>
             <ul className="footer-links-list">
-              <li className="footer-link-item"><a href="#coming-soon-blogs">Blog</a></li>
-              <li className="footer-link-item"><a href="#coming-soon-photo-gallery">Gallery</a></li>
-              <li className="footer-link-item"><a href="#home">Events</a></li>
-              <li className="footer-link-item"><a href="#coming-soon-student-projects">Student Work</a></li>
-              <li className="footer-link-item"><a href="#home">FAQ</a></li>
-              <li className="footer-link-item"><a href="#home">Sitemap</a></li>
+              <li className="footer-link-item"><a href="#blogs">Blog</a></li>
+              <li className="footer-link-item"><a href="#gallery">Gallery</a></li>
+              <li className="footer-link-item"><a href="#faq">FAQ</a></li>
+              <li className="footer-link-item"><a href="#student-projects">Student Work</a></li>
+              <li className="footer-link-item"><a href="#infrastructure">Our Infrastructure</a></li>
+              <li className="footer-link-item"><a href="#sitemap">Sitemap</a></li>
             </ul>
           </div>
 
@@ -123,32 +105,29 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Column 5: Newsletter */}
-          <div className="footer-newsletter">
-            <h4 className="footer-col-title">Newsletter</h4>
-            <p style={{ fontSize: '13px', lineHeight: '1.5' }}>
-              Subscribe to get updates on new courses &amp; offers.
-            </p>
-            <form className="newsletter-form" onSubmit={handleSubmit}>
-              <div className="newsletter-input-group">
-                <input
-                  type="email"
-                  className="newsletter-input"
-                  placeholder="Enter your email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <button type="submit" className="newsletter-btn" aria-label="Subscribe" style={{ background: 'var(--royal-blue)' }}>
-                  <ArrowRight size={14} />
-                </button>
-              </div>
-              {isSubmitted && (
-                <span className="newsletter-success" style={{ fontSize: '12px', color: '#10b981', marginTop: '4px', display: 'block' }}>
-                  Successfully subscribed!
-                </span>
-              )}
-            </form>
+          {/* Column 5: Location Map */}
+          <div className="footer-newsletter" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <h4 className="footer-col-title">Our Campus Location</h4>
+            <div style={{
+              borderRadius: '16px',
+              overflow: 'hidden',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+              boxShadow: '0 10px 25px rgba(0, 0, 0, 0.2)',
+              width: '100%',
+              height: '150px',
+              background: '#090d16'
+            }}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.5627254332357!2d73.77196657519126!3d18.503463882586715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bec704e76a6d%3A0xb36a188ff6e65a7f!2sRohan%20Madhuban%202!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Caddverse Pune Campus Location"
+              />
+            </div>
           </div>
 
         </div>
@@ -158,10 +137,12 @@ export const Footer: React.FC = () => {
           <div className="footer-copy" style={{ fontSize: '13px', color: '#64748B' }}>
             &copy; 2026 Caddverse Techlabs. All rights reserved.
           </div>
-          <div className="footer-bottom-links" style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-            <a href="#home">Privacy Policy</a>
+          <div className="footer-bottom-links" style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}>
+            <a href="#privacy-policy">Privacy Policy</a>
             <span style={{ color: '#334155' }}>|</span>
             <a href="#terms-conditions">Terms &amp; Conditions</a>
+            <span style={{ color: '#334155' }}>|</span>
+            <a href="#refund-policy">Refund &amp; Cancellation Policy</a>
           </div>
           
           {/* Floating Scroll up button from the reference image */}

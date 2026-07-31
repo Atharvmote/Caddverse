@@ -50,7 +50,7 @@ export const WhatsAppWidget: React.FC = () => {
         <div className="wa-popup-chat-area">
           <div className="wa-chat-bubble wa-chat-received">
             <p>Hi there! 👋</p>
-            <p>Welcome to CADDverse Techlabs.</p>
+            <p>Welcome to <strong style={{ fontWeight: '800' }}>CADDVERSE TEACHLABS</strong>.</p>
             <p>Which course or program are you interested in? Choose from our catalog below.</p>
             <span className="wa-chat-time">{new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
           </div>

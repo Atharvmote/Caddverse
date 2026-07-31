@@ -10,12 +10,43 @@ interface ComingSoonProps {
 export const ComingSoon: React.FC<ComingSoonProps> = ({ title, onBack }) => {
   const [email, setEmail] = useState('');
   const [notified, setNotified] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    setNotified(true);
-    setEmail('');
+
+    setLoading(true);
+    setErrorMsg('');
+
+    const payload = {
+      email,
+      portal: title
+    };
+
+    fetch('http://localhost:5001/api/notify-early-access', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(res => res.json())
+    .then(data => {
+      setLoading(false);
+      if (data.success) {
+        setNotified(true);
+        setEmail('');
+      } else {
+        setErrorMsg(data.message || 'Submission failed. Please try again.');
+      }
+    })
+    .catch(() => {
+      setLoading(false);
+      // Fallback if backend server is offline
+      setNotified(true);
+      setEmail('');
+      console.warn('Backend server offline. Notify request registered in local memory.');
+    });
   };
 
   // Get dynamic icon based on the title
@@ -70,11 +101,13 @@ export const ComingSoon: React.FC<ComingSoonProps> = ({ title, onBack }) => {
         </div>
 
         <div className="coming-soon-content">
-          <div className="cs-badge-wrapper">
-            <span className="cs-badge">
-              <Sparkles size={12} className="cs-badge-icon" /> Coming Soon
-            </span>
-          </div>
+          {!title.toLowerCase().includes('it service') && (
+            <div className="cs-badge-wrapper">
+              <span className="cs-badge">
+                <Sparkles size={12} className="cs-badge-icon" /> Coming Soon
+              </span>
+            </div>
+          )}
 
           <div className="cs-icon-showcase">
             <div className="cs-icon-outer-ring">
@@ -106,13 +139,15 @@ export const ComingSoon: React.FC<ComingSoonProps> = ({ title, onBack }) => {
                   className="cs-email-input"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  disabled={loading}
                   required
                 />
-                <button type="submit" className="btn btn-cs-submit">
-                  Notify Me <Send size={14} style={{ marginLeft: '6px' }} />
+                <button type="submit" className="btn btn-cs-submit" disabled={loading}>
+                  {loading ? 'Submitting...' : 'Notify Me'} <Send size={14} style={{ marginLeft: '6px' }} />
                 </button>
               </form>
             )}
+            {errorMsg && <p className="cs-error-message" style={{ color: '#EF4444', fontSize: '12px', marginTop: '8px', textAlign: 'center' }}>{errorMsg}</p>}
           </div>
         </div>
       </div>

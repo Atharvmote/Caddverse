@@ -22,7 +22,7 @@ const navItems: NavLinkItem[] = [
     href: '#about-us',
     subLinks: [
       { label: 'About CADDverse Techlabs', href: '#about-details' },
-      { label: 'About Director', href: '#coming-soon-about-director' },
+      { label: 'About Director', href: '#about-director' },
     ],
   },
   {
@@ -32,16 +32,15 @@ const navItems: NavLinkItem[] = [
       { label: 'IT Service', href: '#coming-soon-it-services' },
     ],
   },
-  { label: 'Training', href: '#upskilling' },
+  { label: 'Training', href: '#training' },
   {
     label: 'Insights',
     subLinks: [
-      { label: 'Blogs', href: '#coming-soon-blogs' },
-      { label: 'Career', href: '#coming-soon-career' },
-      { label: 'Photo Gallery', href: '#coming-soon-photo-gallery' },
-      { label: 'Video Gallery', href: '#coming-soon-video-gallery' },
-      { label: 'Student Projects', href: '#coming-soon-student-projects' },
-      { label: 'Our Infrastructure', href: '#coming-soon-our-infrastructure' },
+      { label: 'Blogs', href: '#blogs' },
+      { label: 'Career', href: '#career' },
+      { label: 'Photo Gallery', href: '#gallery' },
+      { label: 'Student Projects', href: '#student-projects' },
+      { label: 'Our Infrastructure', href: '#infrastructure' },
     ],
   },
   { label: 'Our Journey', href: '#our-journey' },
@@ -85,11 +84,11 @@ export const Header: React.FC = () => {
       } else if (hash.startsWith('#coming-soon-')) {
         if (hash === '#coming-soon-it-services') {
           setActiveLink('Services');
-        } else if (hash === '#coming-soon-about-director') {
-          setActiveLink('About Us');
         } else {
           setActiveLink('Insights');
         }
+      } else if (hash === '#about-director') {
+        setActiveLink('About Us');
       } else if (hash === '#inquiry') {
         setActiveLink(''); // Form doesn't activate header links
       }

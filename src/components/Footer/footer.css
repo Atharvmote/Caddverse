@@ -66,12 +66,12 @@
 
 .footer-logo-img {
   height: 60px;
-  width: 60px;
+  width:90px;
   border-radius: 8px;
-  object-fit: contain;
+  object-fit: fill;
   flex-shrink: 0;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background-color: var(--white);
+  /* border: 1px solid rgba(255, 255, 255, 0.12); */
+  /* background-color: var(--white); */
   padding: 4px;
 }
 

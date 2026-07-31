@@ -33,7 +33,7 @@ export const AboutDetails: React.FC<AboutDetailsProps> = ({ onBack }) => {
             transition={{ duration: 0.5 }}
           >
             <span className="details-tag font-gradient">WHO WE ARE</span>
-            <h1 className="details-title">About <span className="text-highlight">CADDverse Techlabs</span></h1>
+            <h1 className="details-title">About <span className="text-highlight">CADDVERSE TECHLABS</span></h1>
             <div className="details-underline" />
             <p className="details-subtitle">
               Transforming Engineering Aspirations into Industry-Ready Excellence
@@ -55,7 +55,7 @@ export const AboutDetails: React.FC<AboutDetailsProps> = ({ onBack }) => {
             </div>
             <h3>Core Platform & Vision</h3>
             <p>
-              CADDverse Techlabs is a next-generation Engineering Technology platform committed to nurturing skilled professionals and delivering innovative design solutions through advanced CAD-driven methodologies. We empower students, engineers, and organizations with industry-aligned knowledge, cutting-edge tools, and practical expertise to thrive in the evolving engineering landscape.
+              <b>CADDVERSE TECHLABS</b> is a next-generation Engineering Technology platform committed to nurturing skilled professionals and delivering innovative design solutions through advanced CAD-driven methodologies. We empower students, engineers, and organizations with industry-aligned knowledge, cutting-edge tools, and practical expertise to thrive in the evolving engineering landscape.
             </p>
           </motion.div>
 
@@ -87,7 +87,7 @@ export const AboutDetails: React.FC<AboutDetailsProps> = ({ onBack }) => {
             </div>
             <h3>Beyond Conventional Training</h3>
             <p>
-              At CADDverse Techlabs, we go beyond conventional training by fostering an environment of innovation, creativity, and continuous learning. Our expert-led programs enable learners to master industry-leading software platforms and develop the confidence required to excel in sectors such as Automotive, Mechanical Design, Manufacturing, Construction, Infrastructure, and Product Engineering.
+              At <b>CADDVERSE TECHLABS</b>, we go beyond conventional training by fostering an environment of innovation, creativity, and continuous learning. Our expert-led programs enable learners to master industry-leading software platforms and develop the confidence required to excel in sectors such as Automotive, Mechanical Design, Manufacturing, Construction, Infrastructure, and Product Engineering.
             </p>
           </motion.div>
 
@@ -135,10 +135,10 @@ export const AboutDetails: React.FC<AboutDetailsProps> = ({ onBack }) => {
             </div>
             <h3>Future-Ready Ecosystem</h3>
             <p>
-              Driven by innovation and future-ready technologies, CADDverse Techlabs continues to expand its capabilities across Digital Engineering, Automation, Industry 4.0, and emerging technology domains, creating a complete ecosystem where learning, engineering, and innovation converge.
+              Driven by innovation and future-ready technologies,<b>CADDVERSE TECHLABS</b> continues to expand its capabilities across Digital Engineering, Automation, Industry 4.0, and emerging technology domains, creating a complete ecosystem where learning, engineering, and innovation converge.
             </p>
             <div className="card-tagline">
-              CADDverse Techlabs — Empowering Engineers. Enabling Innovation. Shaping the Future of Design.
+             <b>CADDVERSE TECHLABS</b> — Empowering Engineers. Enabling Innovation. Shaping the Future of Design.
             </div>
           </motion.div>
         </div>

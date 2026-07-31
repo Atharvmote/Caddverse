@@ -666,7 +666,12 @@ export const CoursesSection: React.FC<CoursesSectionProps> = ({
 
             {/* Below the Split (Full Width): Key Differentiators */}
             <div className="details-differentiators-wrapper">
-              <h2 className="differentiators-title">CADDverse Techlabs Key Differentiators</h2>
+              <div className="differentiators-header">
+                <h2 className="section-title">
+                  CADDverse Techlabs <span className="text-highlight">Key Differentiators</span>
+                </h2>
+                <div className="differentiators-divider" />
+              </div>
               
               <div className="differentiators-grid">
                 

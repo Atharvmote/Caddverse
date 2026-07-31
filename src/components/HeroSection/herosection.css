@@ -471,14 +471,14 @@
   pointer-events: none;
   animation: coreFloat 6s ease-in-out infinite;
 }
-
+/* 
 @keyframes coreFloat {
   0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
   50% { transform: translate(-50%, -50%) translateY(-5px); }
-}
+} */
 
 .core-logo-img {
-  width: 140px;
+  width: 190px;
   height: 140px;
   object-fit: contain;
   filter: none; /* Absolutely zero drop shadow or box shadow */
@@ -520,7 +520,7 @@
 }
 
 .v-node-card:hover {
-  transform: translate(-50%, -50%) scale(1.05);
+  transform: translate(-50%, -50%) scale(1.08);
   background: #ffffff;
   border-color: rgba(37, 99, 235, 0.35);
   box-shadow: 
@@ -535,7 +535,7 @@
     0 10px 25px rgba(0, 68, 255, 0.18),
     0 0 0 2px rgba(0, 68, 255, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 1) !important;
-  transform: translate(-50%, -50%) scale(1.08) !important;
+  transform: translate(-50%, -50%) scale(1.16) !important;
 }
 
 .v-node-icon-wrapper {
@@ -703,7 +703,7 @@
 .preview-divider {
   height: 1px;
   width: 100%;
-  background: linear-gradient(90deg, rgba(37, 99, 235, 0.15) 0%, rgba(37, 99, 235, 0.03) 100%);
+  background: linear-gradient(90deg, rgba(35, 49, 81, 0.15) 0%, rgba(37, 99, 235, 0.03) 100%);
   margin: 1px 0;
 }
 
@@ -756,6 +756,7 @@
   margin-top: 20px;
   position: relative;
   z-index: 15;
+  align-self: center;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 

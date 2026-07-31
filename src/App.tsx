@@ -16,12 +16,24 @@ import { ComingSoon } from './components/ComingSoon/ComingSoon';
 import { AboutDetails } from './components/AboutDetails/AboutDetails';
 import { QuoteRequest } from './components/QuoteRequest/QuoteRequest';
 import { TermsAndConditions } from './components/TermsAndConditions/TermsAndConditions';
+import { PrivacyPolicy } from './components/TermsAndConditions/PrivacyPolicy';
+import { RefundPolicy } from './components/TermsAndConditions/RefundPolicy';
+import { BlogsPage } from './components/BlogsPage/BlogsPage';
+import { CareersPage } from './components/CareersPage/CareersPage';
+import { PhotoGalleryPage } from './components/PhotoGalleryPage/PhotoGalleryPage';
+import { StudentProjectsPage } from './components/StudentProjectsPage/StudentProjectsPage';
+import { InfrastructurePage } from './components/InfrastructurePage/InfrastructurePage';
+import { OurJourneyPage } from './components/OurJourneyPage/OurJourneyPage';
+import { FaqPage } from './components/FaqPage/FaqPage';
+import { SitemapPage } from './components/SitemapPage/SitemapPage';
+import { TrainingPage } from './components/TrainingPage/TrainingPage';
+import { AboutDirectorPage } from './components/AboutDirectorPage/AboutDirectorPage';
 import type { Course } from './components/CoursesSection/coursesData';
 import { WhatsAppWidget } from './components/WhatsAppWidget/WhatsAppWidget';
 import './App.css';
 
 function App() {
-  const [viewMode, setViewMode] = useState<'featured' | 'explorer' | 'details' | 'coming-soon' | 'about-details' | 'quote' | 'terms'>('featured');
+  const [viewMode, setViewMode] = useState<'featured' | 'explorer' | 'details' | 'coming-soon' | 'about-details' | 'quote' | 'terms' | 'privacy' | 'refund' | 'blogs' | 'career' | 'gallery' | 'student-projects' | 'infrastructure' | 'our-journey' | 'faq' | 'sitemap' | 'training' | 'about-director'>('featured');
   const [comingSoonTitle, setComingSoonTitle] = useState('IT Services');
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [sourceView, setSourceView] = useState<'featured' | 'explorer'>('featured');
@@ -62,6 +74,30 @@ function App() {
         setViewMode('quote');
       } else if (hash === '#terms-conditions') {
         setViewMode('terms');
+      } else if (hash === '#privacy-policy') {
+        setViewMode('privacy');
+      } else if (hash === '#refund-policy') {
+        setViewMode('refund');
+      } else if (hash === '#blogs') {
+        setViewMode('blogs');
+      } else if (hash === '#career') {
+        setViewMode('career');
+      } else if (hash === '#gallery') {
+        setViewMode('gallery');
+      } else if (hash === '#student-projects') {
+        setViewMode('student-projects');
+      } else if (hash === '#infrastructure') {
+        setViewMode('infrastructure');
+      } else if (hash === '#faq') {
+        setViewMode('faq');
+      } else if (hash === '#sitemap') {
+        setViewMode('sitemap');
+      } else if (hash === '#our-journey') {
+        setViewMode('our-journey');
+      } else if (hash === '#training') {
+        setViewMode('training');
+      } else if (hash === '#about-director' || hash === '#coming-soon-about-director') {
+        setViewMode('about-director');
       } else if (hash === '#about-us') {
         setViewMode('featured');
         // Scroll to about-us section
@@ -74,14 +110,7 @@ function App() {
       } else if (hash.startsWith('#coming-soon-')) {
         const pageKey = hash.replace('#coming-soon-', '');
         const titleMap: Record<string, string> = {
-          'it-services': 'IT Services',
-          'about-director': 'About Director',
-          'blogs': 'Blogs',
-          'career': 'Career',
-          'photo-gallery': 'Photo Gallery',
-          'video-gallery': 'Video Gallery',
-          'student-projects': 'Student Projects',
-          'our-infrastructure': 'Our Infrastructure'
+          'it-services': 'IT Services'
         };
         const title = titleMap[pageKey] || 'Services';
         setComingSoonTitle(title);
@@ -92,8 +121,17 @@ function App() {
         setViewMode('featured');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        // If it's a home page section anchor (e.g. #our-journey)
+        // If it's a home page section anchor (e.g. #our-journey, #upskilling)
         setViewMode('featured');
+        if (hash && hash.startsWith('#')) {
+          setTimeout(() => {
+            const targetId = hash.substring(1);
+            const targetSec = document.getElementById(targetId);
+            if (targetSec) {
+              targetSec.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 150);
+        }
       }
     };
 
@@ -165,6 +203,114 @@ function App() {
         {/* Render Terms and Conditions */}
         {viewMode === 'terms' && (
           <TermsAndConditions 
+            onBack={() => {
+              window.location.hash = '#home';
+            }}
+          />
+        )}
+
+        {/* Render Privacy Policy */}
+        {viewMode === 'privacy' && (
+          <PrivacyPolicy 
+            onBack={() => {
+              window.location.hash = '#home';
+            }}
+          />
+        )}
+
+        {/* Render Refund and Cancellation Policy */}
+        {viewMode === 'refund' && (
+          <RefundPolicy 
+            onBack={() => {
+              window.location.hash = '#home';
+            }}
+          />
+        )}
+
+        {/* Render Blogs */}
+        {viewMode === 'blogs' && (
+          <BlogsPage 
+            onBack={() => {
+              window.location.hash = '#home';
+            }}
+          />
+        )}
+
+        {/* Render Careers */}
+        {viewMode === 'career' && (
+          <CareersPage 
+            onBack={() => {
+              window.location.hash = '#home';
+            }}
+          />
+        )}
+
+        {/* Render Photo Gallery */}
+        {viewMode === 'gallery' && (
+          <PhotoGalleryPage 
+            onBack={() => {
+              window.location.hash = '#home';
+            }}
+          />
+        )}
+
+        {/* Render Student Projects */}
+        {viewMode === 'student-projects' && (
+          <StudentProjectsPage 
+            onBack={() => {
+              window.location.hash = '#home';
+            }}
+          />
+        )}
+
+        {/* Render Our Infrastructure */}
+        {viewMode === 'infrastructure' && (
+          <InfrastructurePage 
+            onBack={() => {
+              window.location.hash = '#home';
+            }}
+          />
+        )}
+
+        {/* Render Our Journey */}
+        {viewMode === 'our-journey' && (
+          <OurJourneyPage 
+            onBack={() => {
+              window.location.hash = '#home';
+            }}
+          />
+        )}
+
+        {/* Render FAQ */}
+        {viewMode === 'faq' && (
+          <FaqPage 
+            onBack={() => {
+              window.location.hash = '#home';
+            }}
+          />
+        )}
+
+        {/* Render Sitemap */}
+        {viewMode === 'sitemap' && (
+          <SitemapPage 
+            onBack={() => {
+              window.location.hash = '#home';
+            }}
+          />
+        )}
+
+        {/* Render Training Formats */}
+        {viewMode === 'training' && (
+          <TrainingPage 
+            onBack={() => {
+              window.location.hash = '#home';
+            }}
+          />
+        )}
+
+        {/* Render About Director */}
+        {viewMode === 'about-director' && (
+          <AboutDirectorPage 
             onBack={() => {
               window.location.hash = '#home';
             }}

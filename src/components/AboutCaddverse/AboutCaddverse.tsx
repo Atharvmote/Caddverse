@@ -47,7 +47,7 @@ export const AboutCaddverse: React.FC = () => {
         {/* Centered Section Header */}
         <div className="about-header-centered">
           <h2 className="section-title about-title">
-            About <span className="text-highlight">CADDverse Techlabs</span>
+            About <span className="text-highlight">CADDVERSE TECHLABS</span>
           </h2>
           <div className="about-divider" />
           <p className="about-subtitle">
@@ -150,12 +150,11 @@ export const AboutCaddverse: React.FC = () => {
 
           {/* Right Column: About Content */}
           <motion.div className="about-content" variants={itemVariants}>
-            <p className="about-desc">
-              CADDverse Techlabs is a next-generation Engineering Technology platform committed to nurturing skilled professionals and delivering innovative design solutions through advanced CAD-driven methodologies. We empower students, engineers, and organizations with industry-aligned knowledge, cutting-edge tools, and practical expertise to thrive in the evolving engineering landscape.
+            <p className="about-desc">  <b>CADDVERSE TECHLABS</b>  is a next-generation Engineering Technology platform committed to nurturing skilled professionals and delivering innovative design solutions through advanced CAD-driven methodologies. We empower students, engineers, and organizations with industry-aligned knowledge, cutting-edge tools, and practical expertise to thrive in the evolving engineering landscape.
             </p>
             
             <p className="about-desc">
-              Alongside our training excellence, we provide comprehensive Engineering Design & Consulting Services, supporting industries with solutions in 3D Modeling, CAD Drafting, Design Optimization, BIM Coordination, and Digital Product Development. Our approach bridges the gap between theoretical learning and real-world industrial applications.
+              Alongside our training excellence, we provide comprehensive Engineering Design & Consulting Services, supporting industries with solutions in 3D Modeling, CAD Drafting, Design Optimization, BIM Co-ordination, and Digital Product Development. Our approach bridges the gap between theoretical learning and real-world industrial applications.
             </p>
 
             {/* Vision and Mission Split */}

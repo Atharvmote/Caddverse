@@ -5,17 +5,7 @@
   border-bottom: 1px solid var(--border);
 }
 
-.partners-title {
-  text-align: center;
-  font-family: var(--font-heading);
-  font-size: 13.5px;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: var(--primary-navy);
-  letter-spacing: 1.5px;
-  margin-bottom: var(--space-6);
-  opacity: 0.95;
-}
+
 
 .partners-slider {
   display: flex;
@@ -188,11 +178,7 @@
 }
 
 @media (max-width: 640px) {
-  .partners-title {
-    font-size: 12px;
-    letter-spacing: 1.2px;
-    margin-bottom: var(--space-4);
-  }
+
 
   .partners-slider {
     gap: 16px 20px;

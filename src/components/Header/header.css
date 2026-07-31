@@ -35,8 +35,8 @@
 }
 
 .header-logo-img {
-  height: 58px;
-  width: 58px;
+  height: 51px;
+  /* width: 58px; */
   border-radius: 10px;
   object-fit: contain;
   flex-shrink: 0;

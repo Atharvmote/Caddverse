@@ -9,7 +9,7 @@ const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5002;
 
 // Setup Middleware
 app.use(cors());
@@ -26,9 +26,16 @@ const DATA_DIR = path.join(__dirname, 'data');
 const DATA_FILE = path.join(DATA_DIR, 'inquiries.json');
 const CORP_QUOTE_FILE = path.join(DATA_DIR, 'corporate_quotes.json');
 const PARTNER_FILE = path.join(DATA_DIR, 'partners.json');
+const NOTIFY_FILE = path.join(DATA_DIR, 'notify_requests.json');
+const CAREER_APP_FILE = path.join(DATA_DIR, 'career_applications.json');
+const UPLOADS_DIR = path.join(__dirname, 'uploads');
+const BROCHURE_PATH = path.join(__dirname, '..', 'src', 'assets', 'broucher.pdf');
 
 if (!fs.existsSync(DATA_DIR)) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
+}
+if (!fs.existsSync(UPLOADS_DIR)) {
+  fs.mkdirSync(UPLOADS_DIR, { recursive: true });
 }
 if (!fs.existsSync(DATA_FILE)) {
   fs.writeFileSync(DATA_FILE, JSON.stringify([], null, 2));
@@ -38,6 +45,12 @@ if (!fs.existsSync(CORP_QUOTE_FILE)) {
 }
 if (!fs.existsSync(PARTNER_FILE)) {
   fs.writeFileSync(PARTNER_FILE, JSON.stringify([], null, 2));
+}
+if (!fs.existsSync(NOTIFY_FILE)) {
+  fs.writeFileSync(NOTIFY_FILE, JSON.stringify([], null, 2));
+}
+if (!fs.existsSync(CAREER_APP_FILE)) {
+  fs.writeFileSync(CAREER_APP_FILE, JSON.stringify([], null, 2));
 }
 
 // Active sessions memory
@@ -107,6 +120,25 @@ const PartnerSchema = new mongoose.Schema({
 });
 
 const Partner = mongoose.model('Partner', PartnerSchema);
+
+const NotifyRequestSchema = new mongoose.Schema({
+  email: { type: String, required: true },
+  portal: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now }
+});
+
+const NotifyRequest = mongoose.model('NotifyRequest', NotifyRequestSchema);
+
+const CareerApplicationSchema = new mongoose.Schema({
+  fullName: { type: String, required: true },
+  email: { type: String, required: true },
+  phone: { type: String, required: true },
+  coverLetter: { type: String, default: '' },
+  resumeFilename: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now }
+});
+
+const CareerApplication = mongoose.model('CareerApplication', CareerApplicationSchema);
 
 // --- ANTI-FRAUD RATE LIMITING ---
 // Limit submissions to 5 inquiries per 15 minutes from an IP
@@ -234,6 +266,36 @@ function saveLocalPartner(partner) {
   const list = getLocalPartners();
   list.unshift(partner);
   fs.writeFileSync(PARTNER_FILE, JSON.stringify(list, null, 2));
+}
+
+function getLocalNotifyRequests() {
+  try {
+    const data = fs.readFileSync(NOTIFY_FILE, 'utf8');
+    return JSON.parse(data);
+  } catch (err) {
+    return [];
+  }
+}
+
+function saveLocalNotifyRequest(req) {
+  const list = getLocalNotifyRequests();
+  list.unshift(req);
+  fs.writeFileSync(NOTIFY_FILE, JSON.stringify(list, null, 2));
+}
+
+function getLocalCareerApps() {
+  try {
+    const data = fs.readFileSync(CAREER_APP_FILE, 'utf8');
+    return JSON.parse(data);
+  } catch (err) {
+    return [];
+  }
+}
+
+function saveLocalCareerApp(appData) {
+  const list = getLocalCareerApps();
+  list.unshift(appData);
+  fs.writeFileSync(CAREER_APP_FILE, JSON.stringify(list, null, 2));
 }
 
 // --- MODERN PROFESSIONAL EMAIL TEMPLATES ---
@@ -388,6 +450,167 @@ function buildPartnerAdminEmail(data) {
           <tr><th>Role/Interest</th><td>${data.role}</td></tr>
           <tr><th>Resume URL</th><td><a href="${data.resumeLink}" target="_blank">${data.resumeLink}</a></td></tr>
           <tr><th>Proposal Note</th><td>${data.message || 'None'}</td></tr>
+        </table>
+      </div>
+    </div>
+  </body>
+  </html>
+  `;
+}
+
+function buildCareerUserEmail(fullName, coverLetter) {
+  return `
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <title>Application Received | CADDverse Techlabs</title>
+    <style>
+      body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #F3F4F6; margin: 0; padding: 0; }
+      .wrapper { width: 100%; max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #E5E7EB; }
+      .header { background: linear-gradient(135deg, #090d16 0%, #1e3a8a 100%); padding: 35px 30px; text-align: center; }
+      .brand { font-size: 24px; font-weight: 900; color: #ffffff; margin: 0; letter-spacing: 0.5px; text-transform: uppercase; }
+      .content { padding: 30px; line-height: 1.6; color: #374151; }
+      .title { font-size: 18px; font-weight: 700; color: #111827; margin-top: 0; }
+      .footer { background: #090d16; padding: 20px; text-align: center; font-size: 11px; color: #9CA3AF; }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <h1 class="brand">CADDVERSE TEACHLABS</h1>
+      </div>
+      <div class="content">
+        <h2 class="title">Dear ${fullName},</h2>
+        <p>Thank you for expressing interest in joining <strong>CADDVERSE TEACHLABS</strong>. We have successfully received your career application and attached your resume document for review.</p>
+        <p>Our Human Resources team will review your qualifications against our active engineering and academic trainer openings. If your background aligns with our requirements, we will contact you directly to schedule an introductory call.</p>
+        ${coverLetter ? `<p><strong>Your Message:</strong><br/><em>${coverLetter}</em></p>` : ''}
+      </div>
+      <div class="footer">
+        CADDVERSE TEACHLABS &copy; ${new Date().getFullYear()} All Rights Reserved.
+      </div>
+    </div>
+  </body>
+  </html>
+  `;
+}
+
+function buildCareerAdminEmail(data) {
+  return `
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <title>New Job Applicant | CADDverse</title>
+    <style>
+      body { font-family: sans-serif; background-color: #F9FAFB; padding: 20px; }
+      .card { background: #fff; border-radius: 12px; border: 1px solid #E5E7EB; overflow: hidden; max-width: 600px; margin: 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+      .header { background: #1e3a8a; padding: 20px; color: #fff; text-align: center; }
+      .content { padding: 30px; }
+      .table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+      .table th, .table td { padding: 12px; border-bottom: 1px solid #F3F4F6; text-align: left; }
+      .table th { background: #F8FAFC; color: #4B5563; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="header"><h2>New Job Application Received</h2></div>
+      <div class="content">
+        <p>A new applicant has submitted their resume document via the CADDverse Careers portal. The resume is attached to this email.</p>
+        <table class="table">
+          <tr><th>Full Name</th><td>${data.fullName}</td></tr>
+          <tr><th>Email Address</th><td>${data.email}</td></tr>
+          <tr><th>Contact Number</th><td>${data.phone}</td></tr>
+          <tr><th>Message</th><td>${data.coverLetter || 'No cover message provided.'}</td></tr>
+          <tr><th>Resume File</th><td>${data.resumeFilename}</td></tr>
+        </table>
+      </div>
+    </div>
+  </body>
+  </html>
+  `;
+}
+
+function buildNotifyUserEmail(email, portal) {
+  return `
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Early Access Registered | CADDverse Techlabs</title>
+    <style>
+      body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #F3F4F6; margin: 0; padding: 0; }
+      .email-wrapper { width: 100%; max-width: 600px; margin: 20px auto; background-color: #FFFFFF; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: 1px solid #E5E7EB; }
+      .email-header { background: linear-gradient(135deg, #090d16 0%, #1e3a8a 100%); padding: 40px 30px; text-align: center; }
+      .logo-brand { font-size: 26px; font-weight: 850; color: #FFFFFF; margin: 0; letter-spacing: 0.5px; text-transform: uppercase; }
+      .logo-sub { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.85); letter-spacing: 3px; display: block; margin-top: 4px; text-transform: uppercase; }
+      .email-content { padding: 35px 30px; line-height: 1.6; color: #1F2937; }
+      .greeting { font-size: 20px; font-weight: 700; color: #111827; margin-top: 0; margin-bottom: 12px; }
+      .intro-text { font-size: 15px; color: #4B5563; margin-bottom: 25px; }
+      .portal-card { background-color: #F8FAFC; border-left: 4px solid #0044FF; padding: 18px; border-radius: 8px; margin-bottom: 30px; border: 1px solid #E2E8F0; }
+      .portal-label { font-size: 10px; font-weight: 800; color: #64748B; letter-spacing: 1px; text-transform: uppercase; }
+      .portal-value { font-size: 16px; font-weight: 700; color: #0044FF; margin-top: 4px; }
+      .email-footer { background-color: #090d16; padding: 30px; text-align: center; font-size: 11.5px; color: #9CA3AF; line-height: 1.5; }
+    </style>
+  </head>
+  <body>
+    <div class="email-wrapper">
+      <div class="email-header">
+        <h1 class="logo-brand">CADDverse</h1>
+        <span class="logo-sub">Techlabs</span>
+      </div>
+      <div class="email-content">
+        <h2 class="greeting">Hello!</h2>
+        <p class="intro-text">
+          Thank you for your interest! We have successfully registered your email for early access notification.
+        </p>
+        
+        <div class="portal-card">
+          <div class="portal-label">Portal Interest</div>
+          <div class="portal-value">${portal} Portal</div>
+          <div class="portal-label" style="margin-top: 10px;">Registered Email</div>
+          <div class="portal-value" style="color: #334155; font-size: 14.5px;">${email}</div>
+        </div>
+        
+        <p class="intro-text">
+          You will be among the first to receive updates and exclusive early access once the ${portal} portal goes live. Stay tuned!
+        </p>
+      </div>
+      <div class="email-footer">
+        CADDverse Techlabs &copy; ${new Date().getFullYear()} All Rights Reserved.
+      </div>
+    </div>
+  </body>
+  </html>
+  `;
+}
+
+function buildNotifyAdminEmail(data) {
+  return `
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <title>New Early Access Request | CADDverse Techlabs</title>
+    <style>
+      body { font-family: sans-serif; background-color: #F9FAFB; padding: 20px; }
+      .card { background: #fff; border-radius: 12px; border: 1px solid #E5E7EB; overflow: hidden; max-width: 600px; margin: 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+      .header { background: #0044FF; padding: 20px; color: #fff; text-align: center; }
+      .content { padding: 30px; }
+      .table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+      .table th, .table td { padding: 12px; border-bottom: 1px solid #F3F4F6; text-align: left; }
+      .table th { background: #F8FAFC; color: #4B5563; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="header"><h2>New Early Access Request</h2></div>
+      <div class="content">
+        <table class="table">
+          <tr><th>Email</th><td>${data.email}</td></tr>
+          <tr><th>Portal Interest</th><td>${data.portal}</td></tr>
+          <tr><th>Timestamp</th><td>${new Date(data.createdAt).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} (IST)</td></tr>
         </table>
       </div>
     </div>
@@ -565,7 +788,24 @@ function buildAdminEmail(data) {
   </body>
   </html>
   `;
+} 
+
+/**
+ * Returns attachment object for the brochure PDF.
+ * Logs error and returns null if the file is missing.
+ */
+function getBrochureAttachment() {
+  if (fs.existsSync(BROCHURE_PATH)) {
+    return {
+      filename: path.basename(BROCHURE_PATH),
+      path: BROCHURE_PATH,
+      contentType: 'application/pdf'
+    };
+  }
+  console.error('Brochure file not found at', BROCHURE_PATH);
+  return null;
 }
+
 
 // --- API ENDPOINTS ---
 
@@ -629,7 +869,8 @@ app.post('/api/inquiry', inquiryLimiter, async (req, res) => {
         from: `"CADDverse Techlabs" <${senderAddress}>`,
         to: email,
         subject: `Your CADDverse Techlabs seat reservation: ${course}`,
-        html: buildUserEmail(fullName, course)
+        html: buildUserEmail(fullName, course),
+        attachments: getBrochureAttachment() ? [getBrochureAttachment()] : []
       };
 
       // 2. Alert notification mail to Admin
@@ -814,6 +1055,170 @@ app.post('/api/partner', inquiryLimiter, async (req, res) => {
   } catch (err) {
     console.error('Partner API error:', err.message);
     return res.status(500).json({ success: false, message: 'Internal Server Error' });
+  }
+});
+
+// Multer File Upload setup for Career applications
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, UPLOADS_DIR);
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    const ext = path.extname(file.originalname);
+    cb(null, 'resume-' + uniqueSuffix + ext);
+  }
+});
+const upload = multer({ 
+  storage: storage,
+  limits: { fileSize: 10 * 1024 * 1024 } // 10MB limit
+});
+
+app.post('/api/apply-career', upload.single('resume'), inquiryLimiter, async (req, res) => {
+  let { fullName, email, phone, coverLetter } = req.body;
+
+  fullName = sanitizeText(fullName);
+  email = sanitizeText(email);
+  phone = sanitizeText(phone);
+  coverLetter = sanitizeText(coverLetter);
+
+  if (!fullName || !email || !phone) {
+    return res.status(400).json({ success: false, message: 'Full name, email, and phone are required.' });
+  }
+  if (!isValidEmail(email)) {
+    return res.status(400).json({ success: false, message: 'Invalid email address.' });
+  }
+  if (!isValidPhone(phone)) {
+    return res.status(400).json({ success: false, message: 'Invalid phone format.' });
+  }
+  if (!req.file) {
+    return res.status(400).json({ success: false, message: 'Resume document file is required.' });
+  }
+
+  const appData = {
+    fullName,
+    email,
+    phone,
+    coverLetter,
+    resumeFilename: req.file.filename,
+    createdAt: new Date()
+  };
+
+  try {
+    let savedApp;
+    if (dbConnected) {
+      savedApp = await CareerApplication.create(appData);
+    } else {
+      const backupApp = {
+        id: 'app-' + Date.now().toString(36),
+        ...appData,
+        createdAt: appData.createdAt.toISOString()
+      };
+      saveLocalCareerApp(backupApp);
+      savedApp = backupApp;
+    }
+
+    if (transporter) {
+      const senderAddress = process.env.SMTP_USER || 'anshul.caddverse@gmail.com';
+      
+      const userMailOptions = {
+        from: `"CADDverse Careers" <${senderAddress}>`,
+        to: email,
+        subject: 'Application Received | CADDVERSE TEACHLABS',
+        html: buildCareerUserEmail(fullName, coverLetter),
+        attachments: [
+          {
+            filename: req.file.originalname,
+            path: req.file.path
+          }
+        ]
+      };
+
+      const adminMailOptions = {
+        from: `"CADDverse Careers Portal" <${senderAddress}>`,
+        to: senderAddress,
+        subject: `[Career Application Alert] ${fullName}`,
+        html: buildCareerAdminEmail(savedApp),
+        attachments: [
+          {
+            filename: req.file.originalname,
+            path: req.file.path
+          }
+        ]
+      };
+
+      transporter.sendMail(userMailOptions).catch(err => console.error('Career candidate email error:', err.message));
+      transporter.sendMail(adminMailOptions).catch(err => console.error('Career admin email error:', err.message));
+    }
+
+    return res.status(200).json({ success: true, message: 'Application submitted successfully.' });
+  } catch (err) {
+    console.error('Career Application API error:', err.message);
+    return res.status(500).json({ success: false, message: 'Internal Server Error' });
+  }
+});
+
+// 1.5 Early Access Notify Route
+app.post('/api/notify-early-access', inquiryLimiter, async (req, res) => {
+  let { email, portal } = req.body;
+
+  email = sanitizeText(email);
+  portal = sanitizeText(portal);
+
+  if (!isValidEmail(email)) {
+    return res.status(400).json({ success: false, message: 'Invalid email address.' });
+  }
+  if (!portal) {
+    return res.status(400).json({ success: false, message: 'Portal name is required.' });
+  }
+
+  const newNotifyData = {
+    email,
+    portal,
+    createdAt: new Date()
+  };
+
+  try {
+    let savedRequest;
+    if (dbConnected) {
+      savedRequest = await NotifyRequest.create(newNotifyData);
+    } else {
+      const backupRequest = {
+        id: Date.now().toString(36) + Math.random().toString(36).substring(2, 6),
+        ...newNotifyData,
+        createdAt: newNotifyData.createdAt.toISOString()
+      };
+      saveLocalNotifyRequest(backupRequest);
+      savedRequest = backupRequest;
+    }
+
+    // Send emails
+    if (transporter) {
+      const senderAddress = process.env.SMTP_USER || 'anshul.caddverse@gmail.com';
+
+      const userMailOptions = {
+        from: `"CADDverse Techlabs" <${senderAddress}>`,
+        to: email,
+        subject: `Early Access Registration: CADDverse ${portal} Portal`,
+        html: buildNotifyUserEmail(email, portal)
+      };
+
+      const adminMailOptions = {
+        from: `"CADDverse Early Access" <${senderAddress}>`,
+        to: senderAddress,
+        subject: `[Early Access Lead] ${email} interested in ${portal}`,
+        html: buildNotifyAdminEmail(savedRequest)
+      };
+
+      transporter.sendMail(userMailOptions).catch(err => console.error('Early access user email error:', err.message));
+      transporter.sendMail(adminMailOptions).catch(err => console.error('Early access admin email error:', err.message));
+    }
+
+    return res.status(200).json({ success: true, message: 'Early access registration successful.' });
+  } catch (err) {
+    console.error('Failed to register notification request:', err.message);
+    return res.status(500).json({ success: false, message: 'Database error while saving request.' });
   }
 });
 
