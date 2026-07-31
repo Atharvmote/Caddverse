@@ -39,7 +39,7 @@ const directorsData = {
     vision: "To establish Caddverse Techlabs LLP as India's premier engineering learning center by introducing state-of-the-art computational methods, BIM standards, and industry validation processes.",
     philosophy: "Leadership in engineering is about creating pathways where raw talent transforms into precision execution.",
     badges: [
-      { type: 'award', text: '7+ Years Industry Consultation' },
+      { type: 'award', text: '10+ Years Industry Consultation' },
       { type: 'book', text: 'BIM Specialist & CAD Consultant' },
       { type: 'heart', text: '100% Placement Bootcamp Mentor' }
     ]
@@ -73,7 +73,7 @@ const directorsData = {
     vision: "To build the most efficient, student-centric operational model in technical education that guarantees quality support, organized learning timelines, and high success rates for every student at Caddverse.",
     philosophy: "True operational leadership lies in aligning every system, process, and person toward the collective success of our learners.",
     badges: [
-      { type: 'award', text: '5+ Years Academic Management' },
+      { type: 'award', text: '10+ Years Academic Management' },
       { type: 'book', text: 'Head of Operations' },
       { type: 'heart', text: 'Student Success & Placement Director' }
     ]
@@ -87,7 +87,7 @@ const directorsData = {
     imagePosition: 'center 5%',
     bio: [
       "Mr. Anshul Shripad is the Director & Co-Founder of Caddverse Techlabs LLP, an engineering technology company committed to transforming technical education, engineering consulting, and product development through innovation, practical learning, and industry collaboration.",
-      "With over 6+ years of professional experience in engineering design, CAD technologies, product development, and technical consulting, he is passionate about developing industry-ready engineers and delivering engineering solutions that create real business value.",
+      "With over 7+ years of professional experience in engineering design, CAD technologies, product development, and technical consulting, he is passionate about developing industry-ready engineers and delivering engineering solutions that create real business value.",
       "His expertise lies in CAD engineering, automotive product design, sheet metal engineering, BIW design, product development, and engineering consulting. Throughout his professional journey, he has worked on complex engineering projects involving automotive systems, manufacturing design, and product optimization while continuously mentoring students and professionals to build successful engineering careers.",
       "Driven by a strong entrepreneurial mindset, Mr. Anshul co-founded Caddverse Techlabs with a vision to bridge the gap between academic education and industrial requirements. Under his leadership, the organization is focused on delivering world-class technical training, CAD/CAM solutions, engineering consulting, design outsourcing, and industry-oriented certification programs that prepare learners for the evolving demands of modern engineering.",
       "He strongly believes that practical knowledge, innovation, and continuous learning are the foundation of engineering excellence. His mission is to create an ecosystem where students, professionals, educational institutions, and industries collaborate to solve real-world engineering challenges while building future-ready careers.",

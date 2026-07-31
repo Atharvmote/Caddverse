@@ -68,14 +68,11 @@ export const WhatsAppWidget: React.FC = () => {
           <button 
             className="wa-topic-btn general-enquiry"
             onClick={() => handleTopicClick(
-`${getGreeting()} CADDverse Techlabs! 👋
+`${getGreeting()} CADDverse Techlabs!
 
 I visited your website and would like to make a general inquiry about your services and training programs. Could you please connect me with a representative?
 
-I have also downloaded the overall brochure from the link below:
-👉 https://caddverse.in/broucher.pdf
-
-Thank you! 🙏`
+Thank you!`
             )}
           >
             <div className="wa-topic-text">
@@ -91,14 +88,11 @@ Thank you! 🙏`
               key={course.id} 
               className="wa-topic-btn"
               onClick={() => handleTopicClick(
-`${getGreeting()} CADDverse Techlabs! 👋
+`${getGreeting()} CADDverse Techlabs!
 
 I am interested in your *${course.title}* program. Could you please share more details regarding the syllabus, fee structure, and upcoming batch timings?
 
-I have also downloaded the program brochure from the link below:
-👉 https://caddverse.in/broucher.pdf
-
-Thank you! 🙏`
+Thank you!`
               )}
             >
               <div className="wa-topic-text">

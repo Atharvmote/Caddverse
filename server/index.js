@@ -29,7 +29,7 @@ const PARTNER_FILE = path.join(DATA_DIR, 'partners.json');
 const NOTIFY_FILE = path.join(DATA_DIR, 'notify_requests.json');
 const CAREER_APP_FILE = path.join(DATA_DIR, 'career_applications.json');
 const UPLOADS_DIR = path.join(__dirname, 'uploads');
-const BROCHURE_PATH = path.join(__dirname, '..', 'src', 'assets', 'broucher.pdf');
+const BROCHURE_PATH = path.join(__dirname, '..', 'src', 'assets', 'brochure.pdf');
 
 if (!fs.existsSync(DATA_DIR)) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
